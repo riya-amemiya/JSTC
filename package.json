@@ -1,0 +1,30 @@
+{
+    "name": "pinata_typescript",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "typescript": "tsc --build tsconfig.json",
+        "babel": "babel tsbuild --extensions '.js' --out-dir build && ./node_modules/.bin/babili build -d min_build",
+        "build": "npm run typescript && npm run babel",
+        "start": "npm run build && node build/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/cli": "^7.12.10",
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-proposal-class-properties": "^7.12.1",
+        "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+        "@babel/preset-env": "^7.12.11",
+        "@babel/preset-typescript": "^7.12.7",
+        "babili": "^0.1.4",
+        "fcc_typescript": "^1.0.8",
+        "typescript": "^4.1.3"
+    },
+    "dependencies": {
+        "tslib": "^2.1.0"
+    }
+}
