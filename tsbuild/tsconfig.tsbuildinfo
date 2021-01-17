@@ -196,9 +196,19 @@
         "signature": "89bf2b7a601b73ea4311eda9c41f86a58994fec1bee3b87c4a14d68d9adcdcbd",
         "affectsGlobalScope": true
       },
+      "../node_modules/acorn/dist/acorn.d.ts": {
+        "version": "806a4158fa55818b2cecc62f7977612ec5393e76ed83714ccd080457e1a75043",
+        "signature": "806a4158fa55818b2cecc62f7977612ec5393e76ed83714ccd080457e1a75043",
+        "affectsGlobalScope": false
+      },
+      "../src/parse/python.ts": {
+        "version": "cd6a4c575bb2c85f44d2d47d868a1acf6400d7043f40f49a1520307d51fff4f5",
+        "signature": "8d1ae8136592317d50f9fc39eacce50e04896afea2c13f52b21ef78f0ed2e3ab",
+        "affectsGlobalScope": false
+      },
       "../src/index.ts": {
-        "version": "d73cd5cd8eb01fb206cf9a0410e7feeb8e192e5e5517cb32c4f20cb035ae759d",
-        "signature": "89d0a2db0657d5550c3ab8fe30e1f26a0850a86eca73a5e4024ff5ec1535d9e7",
+        "version": "bf13c754a544441ff816466061fd40e9ecceb0bc0f704d3bb9c5592bd0764dd6",
+        "signature": "f667f6b1d66ba55f0dcd27f5ff050063fecfe289bad00e8c5d48344a775c1439",
         "affectsGlobalScope": false
       },
       "../../../../../node_modules/@types/common-tags/index.d.ts": {
@@ -654,7 +664,13 @@
     },
     "referencedMap": {
       "../src/index.ts": [
-        "../../../../../node_modules/@types/node/fs.d.ts"
+        "../../../../../node_modules/@types/node/fs.d.ts",
+        "../../../../../node_modules/@types/node/path.d.ts",
+        "../node_modules/acorn/dist/acorn.d.ts",
+        "../src/parse/python.ts"
+      ],
+      "../src/parse/python.ts": [
+        "../node_modules/acorn/dist/acorn.d.ts"
       ],
       "../../../../../node_modules/@types/hast/index.d.ts": [
         "../../../../../node_modules/@types/unist/index.d.ts"
@@ -1044,10 +1060,8 @@
       ]
     },
     "exportedModulesMap": {
-      "../src/index.ts": [
-        "../../../../../node_modules/@types/node/fs.d.ts",
-        "../../../../../node_modules/@types/node/fs/promises.d.ts",
-        "../../../../../node_modules/@types/node/url.d.ts"
+      "../src/parse/python.ts": [
+        "../node_modules/acorn/dist/acorn.d.ts"
       ],
       "../../../../../node_modules/@types/hast/index.d.ts": [
         "../../../../../node_modules/@types/unist/index.d.ts"
@@ -1437,6 +1451,7 @@
       ]
     },
     "semanticDiagnosticsPerFile": [
+      "../node_modules/acorn/dist/acorn.d.ts",
       "../node_modules/typescript/lib/lib.dom.d.ts",
       "../node_modules/typescript/lib/lib.es2015.collection.d.ts",
       "../node_modules/typescript/lib/lib.es2015.core.d.ts",
@@ -1477,6 +1492,7 @@
       "../node_modules/typescript/lib/lib.es5.d.ts",
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../src/index.ts",
+      "../src/parse/python.ts",
       "../../../../../node_modules/@types/common-tags/index.d.ts",
       "../../../../../node_modules/@types/hast/index.d.ts",
       "../../../../../node_modules/@types/istanbul-lib-coverage/index.d.ts",
