@@ -2,7 +2,7 @@
     "name": "cli_jstc",
     "version": "1.0.3",
     "description": "",
-    "main": "min/index.js",
+    "main": "build/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "typescript": "tsc --build tsconfig.json",
