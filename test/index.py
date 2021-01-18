@@ -1,1 +1,0 @@
-def sum(a,b): c=2;print("Hello"); return a * b

@@ -1,7 +1,6 @@
 import * as acorn from "acorn"
-export default (code: acorn._Body3) =>
+export default (code: acorn._Body3, out: { code: string, cash: { code: string, return: string } }): { code: string; cash: { code: string; return: string } } =>
 {
-    let out: { code: string, cash: { code: "", return: "" } } = { code: "", cash: { code: "", return: "" } };
     let argument: { name: string[], out: string } = { name: [], out: "" }
     for (const params of code.params)
     {
@@ -45,6 +44,27 @@ export default (code: acorn._Body3) =>
                             {
                                 out.cash.code += `print("${c.expression.arguments[0].value}");`
                             }
+                            else if (c.expression.arguments[0].type === "BinaryExpression")
+                            {
+                                let t = { name: "", raw: "" };
+                                if (c.expression.arguments[0].left.type === "Identifier")
+                                {
+                                    t.name = c.expression.arguments[0].left?.name
+                                }
+                                else if (c.expression.arguments[0].right.type === "Identifier")
+                                {
+                                    t.name = c.expression.arguments[0].right?.name
+                                }
+                                if (c.expression.arguments[0].right.type === "Literal")
+                                {
+                                    t.raw = `"${c.expression.arguments[0].right?.value}"`
+                                }
+                                else if (c.expression.arguments[0].left.type === "Literal")
+                                {
+                                    t.raw = `"${c.expression.arguments[0].left?.value}"`
+                                }
+                                out.cash.code += `print(${t.name}${c.expression.arguments[0].operator}${t.raw});`
+                            }
                         }
                     }
                 }
@@ -58,6 +78,6 @@ export default (code: acorn._Body3) =>
             }
         }
     }
-    out.code += `def ${code.id.name}(${argument.out}): ${out.cash.code} return ${out.cash.return}`
+    out.code += `def ${code.id.name}(${argument.out}): ${out.cash.code} return ${out.cash.return}\n`
     return out
 }

@@ -197,13 +197,23 @@
         "affectsGlobalScope": true
       },
       "../node_modules/acorn/dist/acorn.d.ts": {
-        "version": "806a4158fa55818b2cecc62f7977612ec5393e76ed83714ccd080457e1a75043",
-        "signature": "806a4158fa55818b2cecc62f7977612ec5393e76ed83714ccd080457e1a75043",
+        "version": "b2a46095f1589ce8ad354475a42f4d5ffd650a62f2ce4d97b4d54b1a0fd0b5a0",
+        "signature": "b2a46095f1589ce8ad354475a42f4d5ffd650a62f2ce4d97b4d54b1a0fd0b5a0",
+        "affectsGlobalScope": false
+      },
+      "../src/parse/modules/function.ts": {
+        "version": "f427d5758873b4838767dc902ac28876d744580d564240e1e6cf9248a5251b39",
+        "signature": "f354a768a13c164e0832c158142232978500f1dd187a0ad4e1ff466c9f88e2fd",
+        "affectsGlobalScope": false
+      },
+      "../src/parse/modules/print.ts": {
+        "version": "bf638dd4a7c8faef8266456803b49af83784423554cc856ca00036a9efbe5fef",
+        "signature": "1d05c9eed2056b821f9cc7b77838070d10664dd6325c1b2a61290ea83f160c86",
         "affectsGlobalScope": false
       },
       "../src/parse/python.ts": {
-        "version": "cd6a4c575bb2c85f44d2d47d868a1acf6400d7043f40f49a1520307d51fff4f5",
-        "signature": "8d1ae8136592317d50f9fc39eacce50e04896afea2c13f52b21ef78f0ed2e3ab",
+        "version": "bef370ec36bf1c6fe068dbbffd02e90dfadf65aacd431dc78cc0c631c5d3c30d",
+        "signature": "f3e8ac0fc442030d25117e3793e0adc41583a4c90b2999509fcf3b03e1cf4edd",
         "affectsGlobalScope": false
       },
       "../src/index.ts": {
@@ -669,8 +679,16 @@
         "../node_modules/acorn/dist/acorn.d.ts",
         "../src/parse/python.ts"
       ],
-      "../src/parse/python.ts": [
+      "../src/parse/modules/function.ts": [
         "../node_modules/acorn/dist/acorn.d.ts"
+      ],
+      "../src/parse/modules/print.ts": [
+        "../node_modules/acorn/dist/acorn.d.ts"
+      ],
+      "../src/parse/python.ts": [
+        "../node_modules/acorn/dist/acorn.d.ts",
+        "../src/parse/modules/function.ts",
+        "../src/parse/modules/print.ts"
       ],
       "../../../../../node_modules/@types/hast/index.d.ts": [
         "../../../../../node_modules/@types/unist/index.d.ts"
@@ -1060,6 +1078,12 @@
       ]
     },
     "exportedModulesMap": {
+      "../src/parse/modules/function.ts": [
+        "../node_modules/acorn/dist/acorn.d.ts"
+      ],
+      "../src/parse/modules/print.ts": [
+        "../node_modules/acorn/dist/acorn.d.ts"
+      ],
       "../src/parse/python.ts": [
         "../node_modules/acorn/dist/acorn.d.ts"
       ],
@@ -1492,6 +1516,8 @@
       "../node_modules/typescript/lib/lib.es5.d.ts",
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../src/index.ts",
+      "../src/parse/modules/function.ts",
+      "../src/parse/modules/print.ts",
       "../src/parse/python.ts",
       "../../../../../node_modules/@types/common-tags/index.d.ts",
       "../../../../../node_modules/@types/hast/index.d.ts",
