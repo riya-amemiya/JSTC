@@ -1,0 +1,9 @@
+node_modules
+tsbuild
+src
+build
+babel
+demo
+js_tcbuild
+.vscode
+test
