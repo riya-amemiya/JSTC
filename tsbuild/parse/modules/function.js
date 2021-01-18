@@ -9,20 +9,21 @@ var __values = (this && this.__values) || function(o) {
     };
     throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
+import VariableDeclaration from "./VariableDeclaration";
+import BinaryExpression from "./BinaryExpression";
 export default (function (code, out) {
     var e_1, _a, e_2, _b;
-    var _c, _d;
     var argument = { name: [], out: "" };
     try {
-        for (var _e = __values(code.params), _f = _e.next(); !_f.done; _f = _e.next()) {
-            var params = _f.value;
+        for (var _c = __values(code.params), _d = _c.next(); !_d.done; _d = _c.next()) {
+            var params = _d.value;
             argument.name.push(params.name);
         }
     }
     catch (e_1_1) { e_1 = { error: e_1_1 }; }
     finally {
         try {
-            if (_f && !_f.done && (_a = _e["return"])) _a.call(_e);
+            if (_d && !_d.done && (_a = _c["return"])) _a.call(_c);
         }
         finally { if (e_1) throw e_1.error; }
     }
@@ -34,16 +35,10 @@ export default (function (code, out) {
         argument.out += "" + argument.name[i] + t;
     }
     try {
-        for (var _g = __values(code.body.body), _h = _g.next(); !_h.done; _h = _g.next()) {
-            var c = _h.value;
+        for (var _e = __values(code.body.body), _f = _e.next(); !_f.done; _f = _e.next()) {
+            var c = _f.value;
             if (c.type === "VariableDeclaration") {
-                if (c.declarations[0].type === "VariableDeclarator") {
-                    if (c.declarations[0].id.type === "Identifier") {
-                        if (c.declarations[0].init.type === "Literal") {
-                            out.cash.code += c.declarations[0].id.name + "=" + c.declarations[0].init.value + ";";
-                        }
-                    }
-                }
+                out = VariableDeclaration(c, out);
             }
             if (c.type === "ExpressionStatement") {
                 if (c.expression.type === "CallExpression") {
@@ -54,14 +49,7 @@ export default (function (code, out) {
                                     out.cash.code += "print(\"" + c.expression.arguments[0].value + "\");";
                                 }
                                 else if (c.expression.arguments[0].type === "BinaryExpression") {
-                                    var t = { name: "", raw: "" };
-                                    if (c.expression.arguments[0].left.type === "Identifier") {
-                                        t.name = (_c = c.expression.arguments[0].left) === null || _c === void 0 ? void 0 : _c.name;
-                                    }
-                                    if (c.expression.arguments[0].right.type === "Literal") {
-                                        t.raw = "\"" + ((_d = c.expression.arguments[0].right) === null || _d === void 0 ? void 0 : _d.value) + "\"";
-                                    }
-                                    out.cash.code += "print(" + t.name + c.expression.arguments[0].operator + t.raw + ");";
+                                    BinaryExpression(c, out);
                                 }
                             }
                         }
@@ -78,7 +66,7 @@ export default (function (code, out) {
     catch (e_2_1) { e_2 = { error: e_2_1 }; }
     finally {
         try {
-            if (_h && !_h.done && (_b = _g["return"])) _b.call(_g);
+            if (_f && !_f.done && (_b = _e["return"])) _b.call(_e);
         }
         finally { if (e_2) throw e_2.error; }
     }

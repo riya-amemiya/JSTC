@@ -197,17 +197,27 @@
         "affectsGlobalScope": true
       },
       "../node_modules/acorn/dist/acorn.d.ts": {
-        "version": "b2a46095f1589ce8ad354475a42f4d5ffd650a62f2ce4d97b4d54b1a0fd0b5a0",
-        "signature": "b2a46095f1589ce8ad354475a42f4d5ffd650a62f2ce4d97b4d54b1a0fd0b5a0",
+        "version": "5bc50377c9fee2964bc83f47d35bbac277aad780790c50900d9c25939e36728e",
+        "signature": "5bc50377c9fee2964bc83f47d35bbac277aad780790c50900d9c25939e36728e",
+        "affectsGlobalScope": false
+      },
+      "../src/parse/modules/variabledeclaration.ts": {
+        "version": "c15b44b224f0e97b91dc90380547ec8c692f3dd7b1d64f1fc1c3a4e6842730c8",
+        "signature": "a8459910c08fd1fd172db020e4d011f580f4e790be39a24537c49e91db99ed5d",
+        "affectsGlobalScope": false
+      },
+      "../src/parse/modules/binaryexpression.ts": {
+        "version": "db843c097d293fc14e4b0b6a937ddd2f9dd04314fe078d4f11a6f6deb20f0ce4",
+        "signature": "ea0bc5d492117a9b448bdb7b151c085ba7b0119d2387b9e651ad88fc19894450",
         "affectsGlobalScope": false
       },
       "../src/parse/modules/function.ts": {
-        "version": "f427d5758873b4838767dc902ac28876d744580d564240e1e6cf9248a5251b39",
+        "version": "292510a907a288fe4177b5d933198ae2790de9a05df21ccdf1e2e7bce24d5cc1",
         "signature": "f354a768a13c164e0832c158142232978500f1dd187a0ad4e1ff466c9f88e2fd",
         "affectsGlobalScope": false
       },
       "../src/parse/modules/print.ts": {
-        "version": "bf638dd4a7c8faef8266456803b49af83784423554cc856ca00036a9efbe5fef",
+        "version": "59df39d1fbd90b779c99f7ff2397b4e1d7540f71aaf9231d33e7746ad90241de",
         "signature": "1d05c9eed2056b821f9cc7b77838070d10664dd6325c1b2a61290ea83f160c86",
         "affectsGlobalScope": false
       },
@@ -217,7 +227,7 @@
         "affectsGlobalScope": false
       },
       "../src/index.ts": {
-        "version": "bf13c754a544441ff816466061fd40e9ecceb0bc0f704d3bb9c5592bd0764dd6",
+        "version": "f596ca9155053946c9636871309673d75ea094b3a67228500c46d737b4d06a29",
         "signature": "f667f6b1d66ba55f0dcd27f5ff050063fecfe289bad00e8c5d48344a775c1439",
         "affectsGlobalScope": false
       },
@@ -679,10 +689,18 @@
         "../node_modules/acorn/dist/acorn.d.ts",
         "../src/parse/python.ts"
       ],
-      "../src/parse/modules/function.ts": [
+      "../src/parse/modules/binaryexpression.ts": [
         "../node_modules/acorn/dist/acorn.d.ts"
       ],
+      "../src/parse/modules/function.ts": [
+        "../node_modules/acorn/dist/acorn.d.ts",
+        "../src/parse/modules/binaryexpression.ts",
+        "../src/parse/modules/variabledeclaration.ts"
+      ],
       "../src/parse/modules/print.ts": [
+        "../node_modules/acorn/dist/acorn.d.ts"
+      ],
+      "../src/parse/modules/variabledeclaration.ts": [
         "../node_modules/acorn/dist/acorn.d.ts"
       ],
       "../src/parse/python.ts": [
@@ -1078,10 +1096,16 @@
       ]
     },
     "exportedModulesMap": {
+      "../src/parse/modules/binaryexpression.ts": [
+        "../node_modules/acorn/dist/acorn.d.ts"
+      ],
       "../src/parse/modules/function.ts": [
         "../node_modules/acorn/dist/acorn.d.ts"
       ],
       "../src/parse/modules/print.ts": [
+        "../node_modules/acorn/dist/acorn.d.ts"
+      ],
+      "../src/parse/modules/variabledeclaration.ts": [
         "../node_modules/acorn/dist/acorn.d.ts"
       ],
       "../src/parse/python.ts": [
@@ -1516,8 +1540,10 @@
       "../node_modules/typescript/lib/lib.es5.d.ts",
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../src/index.ts",
+      "../src/parse/modules/binaryexpression.ts",
       "../src/parse/modules/function.ts",
       "../src/parse/modules/print.ts",
+      "../src/parse/modules/variabledeclaration.ts",
       "../src/parse/python.ts",
       "../../../../../node_modules/@types/common-tags/index.d.ts",
       "../../../../../node_modules/@types/hast/index.d.ts",

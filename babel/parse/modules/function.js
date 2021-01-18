@@ -5,6 +5,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _VariableDeclaration = _interopRequireDefault(require("./VariableDeclaration"));
+
+var _BinaryExpression = _interopRequireDefault(require("./BinaryExpression"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -49,13 +55,7 @@ var _default = function _default(code, out) {
       var c = _step2.value;
 
       if (c.type === "VariableDeclaration") {
-        if (c.declarations[0].type === "VariableDeclarator") {
-          if (c.declarations[0].id.type === "Identifier") {
-            if (c.declarations[0].init.type === "Literal") {
-              out.cash.code += "".concat(c.declarations[0].id.name, "=").concat(c.declarations[0].init.value, ";");
-            }
-          }
-        }
+        out = (0, _VariableDeclaration["default"])(c, out);
       }
 
       if (c.type === "ExpressionStatement") {
@@ -66,24 +66,7 @@ var _default = function _default(code, out) {
                 if (c.expression.arguments[0].type === "Literal") {
                   out.cash.code += "print(\"".concat(c.expression.arguments[0].value, "\");");
                 } else if (c.expression.arguments[0].type === "BinaryExpression") {
-                  var _t = {
-                    name: "",
-                    raw: ""
-                  };
-
-                  if (c.expression.arguments[0].left.type === "Identifier") {
-                    var _c$expression$argumen;
-
-                    _t.name = (_c$expression$argumen = c.expression.arguments[0].left) === null || _c$expression$argumen === void 0 ? void 0 : _c$expression$argumen.name;
-                  }
-
-                  if (c.expression.arguments[0].right.type === "Literal") {
-                    var _c$expression$argumen2;
-
-                    _t.raw = "\"".concat((_c$expression$argumen2 = c.expression.arguments[0].right) === null || _c$expression$argumen2 === void 0 ? void 0 : _c$expression$argumen2.value, "\"");
-                  }
-
-                  out.cash.code += "print(".concat(_t.name).concat(c.expression.arguments[0].operator).concat(_t.raw, ");");
+                  (0, _BinaryExpression["default"])(c, out);
                 }
               }
             }

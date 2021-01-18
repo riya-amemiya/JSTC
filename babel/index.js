@@ -38,14 +38,28 @@ function read(file) {
   return "";
 }
 
-var parse = acorn === null || acorn === void 0 ? void 0 : acorn.parse(read(_path["default"].resolve("test/test.js")), {
-  ecmaVersion: 2020,
-  allowAwaitOutsideFunction: true,
-  allowImportExportEverywhere: true
-});
+if (!process.argv[2]) {
+  console.log("引数が不足してます\n第一引数にファイルパスを指定して下さい");
+}
 
-_fs["default"].writeFileSync(_path["default"].resolve("./test/index.py"), (0, _python["default"])(parse).code, "utf8");
+if (process.argv.findIndex(function (item) {
+  return item === "-t";
+}) !== 2) {
+  var parse = acorn === null || acorn === void 0 ? void 0 : acorn.parse(read(_path["default"].resolve("test/test.js")), {
+    ecmaVersion: 2020,
+    allowAwaitOutsideFunction: true,
+    allowImportExportEverywhere: true
+  });
 
-_fs["default"].writeFileSync(_path["default"].resolve("./test/test.json"), parse ? JSON.stringify(parse) : "{}", 'utf8');
+  if (process.argv.findIndex(function (item) {
+    return item === "-t";
+  }) !== -1) {
+    _fs["default"].writeFileSync(_path["default"].resolve(process.argv[2]), parse ? JSON.stringify(parse) : "{}", 'utf8');
+  }
 
-console.log((0, _python["default"])(parse));
+  _fs["default"].writeFileSync(_path["default"].resolve(process.argv[2]), (0, _python["default"])(parse).code, "utf8");
+
+  console.log((0, _python["default"])(parse));
+} else {
+  console.log("第一引数にはファイルパスを指定して下さい");
+}

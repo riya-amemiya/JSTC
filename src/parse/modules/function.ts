@@ -1,4 +1,6 @@
 import * as acorn from "acorn"
+import VariableDeclaration from "./VariableDeclaration"
+import BinaryExpression from "./BinaryExpression"
 export default (code: acorn._Body3, out: { code: string, cash: { code: string, return: string } }): { code: string; cash: { code: string; return: string } } =>
 {
     let argument: { name: string[], out: string } = { name: [], out: "" }
@@ -19,16 +21,7 @@ export default (code: acorn._Body3, out: { code: string, cash: { code: string, r
     {
         if (c.type === "VariableDeclaration")
         {
-            if (c.declarations[0].type === "VariableDeclarator")
-            {
-                if (c.declarations[0].id.type === "Identifier")
-                {
-                    if (c.declarations[0].init.type === "Literal")
-                    {
-                        out.cash.code += `${c.declarations[0].id.name}=${c.declarations[0].init.value};`
-                    }
-                }
-            }
+            out = VariableDeclaration(c, out)
         }
         if (c.type === "ExpressionStatement")
         {
@@ -46,24 +39,7 @@ export default (code: acorn._Body3, out: { code: string, cash: { code: string, r
                             }
                             else if (c.expression.arguments[0].type === "BinaryExpression")
                             {
-                                let t = { name: "", raw: "" };
-                                if (c.expression.arguments[0].left.type === "Identifier")
-                                {
-                                    t.name = c.expression.arguments[0].left?.name
-                                }
-                                else if (c.expression.arguments[0].right.type === "Identifier")
-                                {
-                                    t.name = c.expression.arguments[0].right?.name
-                                }
-                                if (c.expression.arguments[0].right.type === "Literal")
-                                {
-                                    t.raw = `"${c.expression.arguments[0].right?.value}"`
-                                }
-                                else if (c.expression.arguments[0].left.type === "Literal")
-                                {
-                                    t.raw = `"${c.expression.arguments[0].left?.value}"`
-                                }
-                                out.cash.code += `print(${t.name}${c.expression.arguments[0].operator}${t.raw});`
+                                BinaryExpression(c, out)
                             }
                         }
                     }

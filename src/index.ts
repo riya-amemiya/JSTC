@@ -23,11 +23,24 @@ function read(file: string): string
     }
     return "";
 }
-const parse = acorn?.parse(read(path.resolve("test/test.js")), {
-    ecmaVersion: 2020,
-    allowAwaitOutsideFunction: true,
-    allowImportExportEverywhere: true
-})
-fs.writeFileSync(path.resolve("./test/index.py"), python(parse).code, "utf8")
-fs.writeFileSync(path.resolve("./test/test.json"), parse ? JSON.stringify(parse) : "{}", 'utf8')
-console.log(python(parse));
+if (!process.argv[2])
+{
+    console.log("引数が不足してます\n第一引数にファイルパスを指定して下さい");
+}
+if (process.argv.findIndex(item => item === "-t") !== 2)
+{
+    const parse = acorn?.parse(read(path.resolve("test/test.js")), {
+        ecmaVersion: 2020,
+        allowAwaitOutsideFunction: true,
+        allowImportExportEverywhere: true
+    })
+    if (process.argv.findIndex(item => item === "-t") !== -1)
+    {
+        fs.writeFileSync(path.resolve(process.argv[2]), parse ? JSON.stringify(parse) : "{}", 'utf8')
+    }
+    fs.writeFileSync(path.resolve(process.argv[2]), python(parse).code, "utf8")
+    console.log(python(parse));
+} else
+{
+    console.log("第一引数にはファイルパスを指定して下さい");
+}

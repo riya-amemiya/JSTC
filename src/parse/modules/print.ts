@@ -36,15 +36,14 @@ export default (code: acorn._Body3, out: { code: string, cash: { code: string, r
                                 out.code += `print(${argument.callee.name}(${_argument.out}));`
                             }
                         }
-                        if (argument.type === "BinaryExpression")
+                        if (argument?.type === "BinaryExpression")
                         {
-                            if (argument.left.type === "CallExpression")
+                            if (argument?.left.type === "BinaryExpression")
                             {
-
+                                //console.log(JSON.stringify(argument.left));
                             }
-                            else if (argument.right.type === "CallExpression")
+                            else if (argument?.right.type === "BinaryExpression")
                             {
-
                             }
                         }
                     }

@@ -75,6 +75,11 @@ var _default = function _default(code, out) {
                   out.code += "print(" + argument.callee.name + "(" + _argument.out + "));";
                 }
               }
+
+              if ((argument === null || argument === void 0 ? void 0 : argument.type) === "BinaryExpression") {
+                if ((argument === null || argument === void 0 ? void 0 : argument.left.type) === "BinaryExpression") {//console.log(JSON.stringify(argument.left));
+                } else if ((argument === null || argument === void 0 ? void 0 : argument.right.type) === "BinaryExpression") {}
+              }
             }
           } catch (e_1_1) {
             e_1 = {
