@@ -1,5 +1,5 @@
 import * as acorn from "acorn"
-export default (c: acorn._Body, out: { code: string, cash: { code: string, return: string } }):
+export default (c: acorn.Body, out: { code: string, cash: { code: string, return: string } }):
     {
         code: string; cash: {
             code: string; return: string;

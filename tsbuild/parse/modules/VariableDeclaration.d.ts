@@ -1,5 +1,5 @@
-import * as acorn from "acorn";
-declare const _default: (c: acorn._Body, out: {
+import acorn from "acorn";
+declare const _default: (c: acorn.Body, out: {
     code: string;
     cash: {
         code: string;

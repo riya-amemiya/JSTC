@@ -1,5 +1,5 @@
 import * as acorn from "acorn"
-export default (code: acorn._Body3, out: { code: string, cash: { code: string, return: string } }): { code: string; cash: { code: string; return: string } } =>
+export default (code: acorn.Body3, out: { code: string, cash: { code: string, return: string } }): { code: string; cash: { code: string; return: string } } =>
 {
     if (code.expression.type === "CallExpression")
     {

@@ -1,4 +1,4 @@
-import * as acorn from "acorn";
+import acorn from "acorn";
 export default function python(codes: acorn.Node): {
     code: string;
     cash: {

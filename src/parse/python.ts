@@ -1,4 +1,4 @@
-import * as acorn from "acorn"
+import acorn from "acorn"
 import fn from "./modules/function"
 import print from "./modules/print"
 export default function python(codes: acorn.Node):

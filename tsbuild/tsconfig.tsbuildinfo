@@ -197,38 +197,43 @@
         "affectsGlobalScope": true
       },
       "../node_modules/acorn/dist/acorn.d.ts": {
-        "version": "5bc50377c9fee2964bc83f47d35bbac277aad780790c50900d9c25939e36728e",
-        "signature": "5bc50377c9fee2964bc83f47d35bbac277aad780790c50900d9c25939e36728e",
+        "version": "fd98a2934a3fb491f2ef8ee73420b330eae54ee1144f05635db7ad73c9186ad8",
+        "signature": "fd98a2934a3fb491f2ef8ee73420b330eae54ee1144f05635db7ad73c9186ad8",
         "affectsGlobalScope": false
       },
       "../src/parse/modules/variabledeclaration.ts": {
-        "version": "c15b44b224f0e97b91dc90380547ec8c692f3dd7b1d64f1fc1c3a4e6842730c8",
-        "signature": "a8459910c08fd1fd172db020e4d011f580f4e790be39a24537c49e91db99ed5d",
+        "version": "7fc25e14354a7321c00572b5f79e0ea62edd0c5b6dd82fb7726c159c407688da",
+        "signature": "94f716c38efceb363659d7ab68c677c137ece325896d4e04d85884c9d7c3167c",
         "affectsGlobalScope": false
       },
       "../src/parse/modules/binaryexpression.ts": {
-        "version": "db843c097d293fc14e4b0b6a937ddd2f9dd04314fe078d4f11a6f6deb20f0ce4",
-        "signature": "ea0bc5d492117a9b448bdb7b151c085ba7b0119d2387b9e651ad88fc19894450",
+        "version": "feeb037364f333705bcac664338bdbee46ce2758983ec1734bf2de319a9b0124",
+        "signature": "113e4a3ad44f6830ecb3556aadd781c4ed66f5917b6a6f971ec1c486668fbf3d",
         "affectsGlobalScope": false
       },
       "../src/parse/modules/function.ts": {
-        "version": "292510a907a288fe4177b5d933198ae2790de9a05df21ccdf1e2e7bce24d5cc1",
-        "signature": "f354a768a13c164e0832c158142232978500f1dd187a0ad4e1ff466c9f88e2fd",
+        "version": "840d35f67eae2c4a2db6b814a870642161783f6268d1830b146b7a454a910607",
+        "signature": "c9b785269d1f2678e55f04839c02d0995ec2d37e14c88d1662f6cb6df91aa4a2",
         "affectsGlobalScope": false
       },
       "../src/parse/modules/print.ts": {
-        "version": "59df39d1fbd90b779c99f7ff2397b4e1d7540f71aaf9231d33e7746ad90241de",
-        "signature": "1d05c9eed2056b821f9cc7b77838070d10664dd6325c1b2a61290ea83f160c86",
+        "version": "6da7338a5759144e86ad1921329e94761c9e579e234d48d03d820d6b09396a3e",
+        "signature": "110c1ab6a3f3b208a5fe903fae616837e9e041aacd0d4ad5d220b18d9c923e0e",
         "affectsGlobalScope": false
       },
       "../src/parse/python.ts": {
-        "version": "bef370ec36bf1c6fe068dbbffd02e90dfadf65aacd431dc78cc0c631c5d3c30d",
-        "signature": "f3e8ac0fc442030d25117e3793e0adc41583a4c90b2999509fcf3b03e1cf4edd",
+        "version": "cb0bcfc55bc07d783bc212ce252a550587b7a12dd6f94c1aab9d66b60fcb23b8",
+        "signature": "e290fa8144e366fd3138581b44e3d8f9049c8262ae011e4c5a7387ef9ab64073",
         "affectsGlobalScope": false
       },
       "../src/index.ts": {
-        "version": "36d241a224d32c566363142ca546ed0c02213561d0cbda30e9129a2a5f357c81",
+        "version": "525c9833e22874e95f5162043f54eebcbe2629f535d26ed8a326ddb74bbfa71b",
         "signature": "f667f6b1d66ba55f0dcd27f5ff050063fecfe289bad00e8c5d48344a775c1439",
+        "affectsGlobalScope": false
+      },
+      "../type/type.d.ts": {
+        "version": "04b191267d82886d1409d0afeb06fbcfa9fe0d04135469f0a8fcf356b3fdc3b7",
+        "signature": "04b191267d82886d1409d0afeb06fbcfa9fe0d04135469f0a8fcf356b3fdc3b7",
         "affectsGlobalScope": false
       },
       "../../../../../node_modules/@types/common-tags/index.d.ts": {
@@ -1545,6 +1550,7 @@
       "../src/parse/modules/print.ts",
       "../src/parse/modules/variabledeclaration.ts",
       "../src/parse/python.ts",
+      "../type/type.d.ts",
       "../../../../../node_modules/@types/common-tags/index.d.ts",
       "../../../../../node_modules/@types/hast/index.d.ts",
       "../../../../../node_modules/@types/istanbul-lib-coverage/index.d.ts",
