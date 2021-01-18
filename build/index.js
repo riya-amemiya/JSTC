@@ -50,16 +50,39 @@ if (process.argv.findIndex(function (item) {
     allowAwaitOutsideFunction: true,
     allowImportExportEverywhere: true
   });
+  var out = "js_tcbuild";
+
+  if (process.argv.findIndex(function (item) {
+    return item === "-out";
+  }) !== -1) {
+    if (!process.argv[process.argv.findIndex(function (item) {
+      return item === "-out";
+    }) + 1]) {
+      console.log("引数が不足しています");
+    } else {
+      out = process.argv[process.argv.findIndex(function (item) {
+        return item === "-out";
+      }) + 1];
+    }
+  }
+
+  if (!check(_path["default"].resolve(out))) {
+    _fs["default"].mkdir(_path["default"].resolve(out), function (err) {
+      if (err) {
+        throw err;
+      }
+    });
+  }
+
+  _fs["default"].writeFileSync(_path["default"].resolve(out) + "/index.py", (0, _python["default"])(parse).code, "utf8");
+
+  console.log((0, _python["default"])(parse));
 
   if (process.argv.findIndex(function (item) {
     return item === "-t";
   }) !== -1) {
-    _fs["default"].writeFileSync(_path["default"].resolve(process.argv[2]), parse ? JSON.stringify(parse) : "{}", 'utf8');
+    _fs["default"].writeFileSync(_path["default"].resolve(_path["default"].resolve(out) + "/build.json"), parse ? JSON.stringify(parse) : "{}", 'utf8');
   }
-
-  _fs["default"].writeFileSync(_path["default"].resolve(process.argv[2]), (0, _python["default"])(parse).code, "utf8");
-
-  console.log((0, _python["default"])(parse));
 } else {
   console.log("第一引数にはファイルパスを指定して下さい");
 }

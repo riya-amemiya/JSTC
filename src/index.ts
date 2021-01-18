@@ -34,12 +34,33 @@ if (process.argv.findIndex(item => item === "-t") !== 2)
         allowAwaitOutsideFunction: true,
         allowImportExportEverywhere: true
     })
+    let out: string = "js_tcbuild"
+    if (process.argv.findIndex(item => item === "-out") !== -1)
+    {
+        if (!process.argv[process.argv.findIndex(item => item === "-out") + 1])
+        {
+            console.log("引数が不足しています");
+        } else
+        {
+            out = process.argv[process.argv.findIndex(item => item === "-out") + 1]
+        }
+    }
+    if (!check(path.resolve(out)))
+    {
+        fs.mkdir(path.resolve(out), (err): void =>
+        {
+            if (err)
+            {
+                throw err;
+            }
+        });
+    }
+    fs.writeFileSync(`${path.resolve(out)}/index.py`, python(parse).code, "utf8")
+    console.log(python(parse));
     if (process.argv.findIndex(item => item === "-t") !== -1)
     {
-        fs.writeFileSync(path.resolve(process.argv[2]), parse ? JSON.stringify(parse) : "{}", 'utf8')
+        fs.writeFileSync(path.resolve(`${path.resolve(out)}/build.json`), parse ? JSON.stringify(parse) : "{}", 'utf8')
     }
-    fs.writeFileSync(path.resolve(process.argv[2]), python(parse).code, "utf8")
-    console.log(python(parse));
 } else
 {
     console.log("第一引数にはファイルパスを指定して下さい");

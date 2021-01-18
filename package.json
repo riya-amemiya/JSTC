@@ -30,5 +30,8 @@
         "acorn-node": "^2.0.1",
         "acorn-walk": "^8.0.1",
         "tslib": "^2.1.0"
+    },
+    "bin": {
+        "jstc": "./bin/cli.js"
     }
 }
