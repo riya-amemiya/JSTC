@@ -34,7 +34,6 @@ if (process.argv.findIndex(item => item === "-t") !== 2)
         allowAwaitOutsideFunction: true,
         allowImportExportEverywhere: true
     })
-    console.log(parse);
     let out: string = "jstc＿build"
     if (process.argv.findIndex(item => item === "-out") !== -1)
     {
@@ -57,7 +56,7 @@ if (process.argv.findIndex(item => item === "-t") !== 2)
         });
     }
     fs.writeFileSync(`${path.resolve(out)}/index.py`, python(parse).code, "utf8")
-    console.log(python(parse));
+    console.log(python(parse).code);
     if (process.argv.findIndex(item => item === "-t") !== -1)
     {
         fs.writeFileSync(path.resolve(`${path.resolve(out)}/build.json`), parse ? JSON.stringify(parse) : "{}", 'utf8')
