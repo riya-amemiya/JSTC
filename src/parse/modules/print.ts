@@ -1,5 +1,10 @@
 import acorn from "../../../type/type"
-export default (code: acorn.Body3, out: { code: string, cash: { code: string, return: string } }): { code: string; cash: { code: string; return: string } } =>
+/**
+ * @module print
+ * @param code
+ * @param out
+ */
+export default (code: acorn.Body3, out: { code: string, cash: { code: string, return: string } }): acorn.OUT =>
 {
     if (code.expression.type === "CallExpression")
     {

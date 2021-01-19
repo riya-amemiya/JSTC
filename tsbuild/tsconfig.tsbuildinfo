@@ -202,8 +202,8 @@
         "affectsGlobalScope": false
       },
       "../type/type.d.ts": {
-        "version": "a942857e22742952c18ac550d0c7f61395a7148fdb4d6a82c6797ad14934ecea",
-        "signature": "a942857e22742952c18ac550d0c7f61395a7148fdb4d6a82c6797ad14934ecea",
+        "version": "e72b1e348fadfcb907fe781cb8ef80211a078ca333fd7d949258b943489d520b",
+        "signature": "e72b1e348fadfcb907fe781cb8ef80211a078ca333fd7d949258b943489d520b",
         "affectsGlobalScope": false
       },
       "../src/parse/modules/variabledeclaration.ts": {
@@ -222,18 +222,23 @@
         "affectsGlobalScope": false
       },
       "../src/parse/modules/print.ts": {
-        "version": "9cf6a4644798b4c2ca0f46347b7fde0743674e188eee74fea05a84bb7851e2e3",
-        "signature": "2b74388f72fad8020e5ebc5f8fbf807fe140d67551689ea0ec4e55d2fdfaff19",
+        "version": "fad3ef0b543b2d8c62fbb47a7f7c538272e61a3df1953fa7d737e164e0352e96",
+        "signature": "b37968384b780f9513a238d7fa726e4efcb8122b984997ba4dabeae07cdaf79f",
         "affectsGlobalScope": false
       },
       "../src/parse/python.ts": {
-        "version": "fc6149ce6a3d7bb17e73f13e0daacc2b55c304482a2883b7ca5073dbdba76564",
-        "signature": "17d2db76bd40cc909b3de23e5ff3a0934c50a37e380352d53175031c010ab00e",
+        "version": "ba7c74041165239358273c223315deec85806cb15f9027ca455dd713c9e9a75b",
+        "signature": "e7bafd7e454b58de996021a379640cbc32d05811f490034d75c1f99ee87e96d2",
         "affectsGlobalScope": false
       },
       "../src/index.ts": {
-        "version": "7d200e3f5883206b98d2527f8ac4fb0484f92f09043dbde31e9a9fca3f08ba9e",
+        "version": "d70f1cc8c7d6b24098c6f476a2ce5d03be9fb3b68e26a7348d4ca6df05cb468e",
         "signature": "f667f6b1d66ba55f0dcd27f5ff050063fecfe289bad00e8c5d48344a775c1439",
+        "affectsGlobalScope": false
+      },
+      "../type/json.d.ts": {
+        "version": "2c2c57cccf1d6aaae6ac34f0b1fb05028d4876af71f86ef633b7e1ec04729d23",
+        "signature": "2c2c57cccf1d6aaae6ac34f0b1fb05028d4876af71f86ef633b7e1ec04729d23",
         "affectsGlobalScope": false
       },
       "../../../../../node_modules/@types/common-tags/index.d.ts": {
@@ -692,7 +697,8 @@
         "../../../../../node_modules/@types/node/fs.d.ts",
         "../../../../../node_modules/@types/node/path.d.ts",
         "../node_modules/acorn/dist/acorn.d.ts",
-        "../src/parse/python.ts"
+        "../src/parse/python.ts",
+        "../type/json.d.ts"
       ],
       "../src/parse/modules/binaryexpression.ts": [
         "../type/type.d.ts"
@@ -1550,6 +1556,7 @@
       "../src/parse/modules/print.ts",
       "../src/parse/modules/variabledeclaration.ts",
       "../src/parse/python.ts",
+      "../type/json.d.ts",
       "../type/type.d.ts",
       "../../../../../node_modules/@types/common-tags/index.d.ts",
       "../../../../../node_modules/@types/hast/index.d.ts",

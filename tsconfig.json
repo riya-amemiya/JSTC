@@ -9,7 +9,7 @@
     "module": "esnext",
     "jsx": "react",
     "noEmit": false,
-    "removeComments": false,
+    "removeComments": true,
     "allowJs": true,
     "strict": true,
     "alwaysStrict": true,
