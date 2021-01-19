@@ -1,4 +1,4 @@
-import * as acorn from "acorn"
+import acorn from "../../../type/type"
 export default (code: acorn.Body3, out: { code: string, cash: { code: string, return: string } }): { code: string; cash: { code: string; return: string } } =>
 {
     if (code.expression.type === "CallExpression")

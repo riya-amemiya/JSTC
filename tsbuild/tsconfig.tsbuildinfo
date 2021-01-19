@@ -201,9 +201,14 @@
         "signature": "fd98a2934a3fb491f2ef8ee73420b330eae54ee1144f05635db7ad73c9186ad8",
         "affectsGlobalScope": false
       },
+      "../type/type.d.ts": {
+        "version": "a942857e22742952c18ac550d0c7f61395a7148fdb4d6a82c6797ad14934ecea",
+        "signature": "a942857e22742952c18ac550d0c7f61395a7148fdb4d6a82c6797ad14934ecea",
+        "affectsGlobalScope": false
+      },
       "../src/parse/modules/variabledeclaration.ts": {
-        "version": "7fc25e14354a7321c00572b5f79e0ea62edd0c5b6dd82fb7726c159c407688da",
-        "signature": "94f716c38efceb363659d7ab68c677c137ece325896d4e04d85884c9d7c3167c",
+        "version": "d00bebb41d4178e70508122c8ce1fb45f8bc61b614efc939f815fca27fd4a4fa",
+        "signature": "c87aca4de3df1e85933b4e272f8a8b6cf218fefed7756721a94595055f34b85a",
         "affectsGlobalScope": false
       },
       "../src/parse/modules/binaryexpression.ts": {
@@ -212,28 +217,23 @@
         "affectsGlobalScope": false
       },
       "../src/parse/modules/function.ts": {
-        "version": "840d35f67eae2c4a2db6b814a870642161783f6268d1830b146b7a454a910607",
-        "signature": "c9b785269d1f2678e55f04839c02d0995ec2d37e14c88d1662f6cb6df91aa4a2",
+        "version": "92e424ca1559c159dc830730d24da8ae0e6555ac216b79bfe7b36ff1a6587160",
+        "signature": "2d1e1436d7b2cb01279f2512cc65d0e07b8f178231d4fda3f3adf1b17a5513b8",
         "affectsGlobalScope": false
       },
       "../src/parse/modules/print.ts": {
-        "version": "6da7338a5759144e86ad1921329e94761c9e579e234d48d03d820d6b09396a3e",
-        "signature": "110c1ab6a3f3b208a5fe903fae616837e9e041aacd0d4ad5d220b18d9c923e0e",
+        "version": "9cf6a4644798b4c2ca0f46347b7fde0743674e188eee74fea05a84bb7851e2e3",
+        "signature": "2b74388f72fad8020e5ebc5f8fbf807fe140d67551689ea0ec4e55d2fdfaff19",
         "affectsGlobalScope": false
       },
       "../src/parse/python.ts": {
-        "version": "cb0bcfc55bc07d783bc212ce252a550587b7a12dd6f94c1aab9d66b60fcb23b8",
-        "signature": "e290fa8144e366fd3138581b44e3d8f9049c8262ae011e4c5a7387ef9ab64073",
+        "version": "fc6149ce6a3d7bb17e73f13e0daacc2b55c304482a2883b7ca5073dbdba76564",
+        "signature": "17d2db76bd40cc909b3de23e5ff3a0934c50a37e380352d53175031c010ab00e",
         "affectsGlobalScope": false
       },
       "../src/index.ts": {
         "version": "29205cabaa79703e86b92571cfd7309c3bca9b37c70b9729f9831d5ca5686d21",
         "signature": "f667f6b1d66ba55f0dcd27f5ff050063fecfe289bad00e8c5d48344a775c1439",
-        "affectsGlobalScope": false
-      },
-      "../type/type.d.ts": {
-        "version": "04b191267d82886d1409d0afeb06fbcfa9fe0d04135469f0a8fcf356b3fdc3b7",
-        "signature": "04b191267d82886d1409d0afeb06fbcfa9fe0d04135469f0a8fcf356b3fdc3b7",
         "affectsGlobalScope": false
       },
       "../../../../../node_modules/@types/common-tags/index.d.ts": {
@@ -698,20 +698,20 @@
         "../node_modules/acorn/dist/acorn.d.ts"
       ],
       "../src/parse/modules/function.ts": [
-        "../node_modules/acorn/dist/acorn.d.ts",
         "../src/parse/modules/binaryexpression.ts",
-        "../src/parse/modules/variabledeclaration.ts"
+        "../src/parse/modules/variabledeclaration.ts",
+        "../type/type.d.ts"
       ],
       "../src/parse/modules/print.ts": [
-        "../node_modules/acorn/dist/acorn.d.ts"
+        "../type/type.d.ts"
       ],
       "../src/parse/modules/variabledeclaration.ts": [
-        "../node_modules/acorn/dist/acorn.d.ts"
+        "../type/type.d.ts"
       ],
       "../src/parse/python.ts": [
-        "../node_modules/acorn/dist/acorn.d.ts",
         "../src/parse/modules/function.ts",
-        "../src/parse/modules/print.ts"
+        "../src/parse/modules/print.ts",
+        "../type/type.d.ts"
       ],
       "../../../../../node_modules/@types/hast/index.d.ts": [
         "../../../../../node_modules/@types/unist/index.d.ts"
@@ -1105,16 +1105,16 @@
         "../node_modules/acorn/dist/acorn.d.ts"
       ],
       "../src/parse/modules/function.ts": [
-        "../node_modules/acorn/dist/acorn.d.ts"
+        "../type/type.d.ts"
       ],
       "../src/parse/modules/print.ts": [
-        "../node_modules/acorn/dist/acorn.d.ts"
+        "../type/type.d.ts"
       ],
       "../src/parse/modules/variabledeclaration.ts": [
-        "../node_modules/acorn/dist/acorn.d.ts"
+        "../type/type.d.ts"
       ],
       "../src/parse/python.ts": [
-        "../node_modules/acorn/dist/acorn.d.ts"
+        "../type/type.d.ts"
       ],
       "../../../../../node_modules/@types/hast/index.d.ts": [
         "../../../../../node_modules/@types/unist/index.d.ts"

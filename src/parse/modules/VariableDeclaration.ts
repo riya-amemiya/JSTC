@@ -1,4 +1,4 @@
-import acorn from "acorn"
+import acorn from "../../../type/type"
 export default (c: acorn.Body, out: { code: string, cash: { code: string, return: string } }):
     {
         code: string; cash: {

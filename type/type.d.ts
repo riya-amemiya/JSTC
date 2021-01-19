@@ -263,7 +263,7 @@ declare namespace acorn
         loc?: SourceLocation
         sourceFile?: string
         range?: [number, number]
-        body: RootObject
+        body: Body3[]
         constructor(parser: Parser, pos: number, loc?: SourceLocation)
     }
 
