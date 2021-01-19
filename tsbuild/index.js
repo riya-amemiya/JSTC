@@ -23,11 +23,12 @@ if (!process.argv[2]) {
     console.log("引数が不足してます\n第一引数にファイルパスを指定して下さい");
 }
 if (process.argv.findIndex(function (item) { return item === "-t"; }) !== 2) {
-    var parse = acorn === null || acorn === void 0 ? void 0 : acorn.parse(read(path.resolve("test/test.js")), {
+    var parse = acorn === null || acorn === void 0 ? void 0 : acorn.parse(read(path.resolve(process.argv[2])), {
         ecmaVersion: 2020,
         allowAwaitOutsideFunction: true,
         allowImportExportEverywhere: true
     });
+    console.log(parse);
     var out = "jstc＿build";
     if (process.argv.findIndex(function (item) { return item === "-out"; }) !== -1) {
         if (!process.argv[process.argv.findIndex(function (item) { return item === "-out"; }) + 1]) {

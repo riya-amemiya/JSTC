@@ -45,11 +45,12 @@ if (!process.argv[2]) {
 if (process.argv.findIndex(function (item) {
   return item === "-t";
 }) !== 2) {
-  var parse = acorn === null || acorn === void 0 ? void 0 : acorn.parse(read(_path["default"].resolve("test/test.js")), {
+  var parse = acorn === null || acorn === void 0 ? void 0 : acorn.parse(read(_path["default"].resolve(process.argv[2])), {
     ecmaVersion: 2020,
     allowAwaitOutsideFunction: true,
     allowImportExportEverywhere: true
   });
+  console.log(parse);
   var out = "jstc＿build";
 
   if (process.argv.findIndex(function (item) {
