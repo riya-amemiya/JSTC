@@ -2,6 +2,7 @@ import * as acorn from 'acorn';
 import fs from 'fs';
 import path from 'path';
 import python from './parse/python';
+import v from "./../package.json";
 function check(file) {
     var hasfaile = false;
     try {
@@ -37,8 +38,8 @@ if (process.argv.findIndex(function (item) { return item === "-t"; }) !== 2) {
             out = process.argv[process.argv.findIndex(function (item) { return item === "-out"; }) + 1];
         }
     }
-    if (process.argv.findIndex(function (item) { return item === "-v"; }) !== 2) {
-        console.log(JSON.parse(read(path.resolve("package.json"))).version);
+    if (process.argv.findIndex(function (item) { return item === "-v"; }) !== -1) {
+        console.log(v.version);
     }
     if (!check(path.resolve(out))) {
         fs.mkdir(path.resolve(out), function (err) {

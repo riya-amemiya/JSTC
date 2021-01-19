@@ -232,8 +232,13 @@
         "affectsGlobalScope": false
       },
       "../src/index.ts": {
-        "version": "fbbacaf9344307cd22f7994379bdcbb4cace12ee91192659813afd564e5dfc25",
+        "version": "36a0cf77d74f4599eedb74bd68e7912f8aab7a9789f1f8859f1f610e72795d0f",
         "signature": "f667f6b1d66ba55f0dcd27f5ff050063fecfe289bad00e8c5d48344a775c1439",
+        "affectsGlobalScope": false
+      },
+      "../type/json.d.ts": {
+        "version": "2c2c57cccf1d6aaae6ac34f0b1fb05028d4876af71f86ef633b7e1ec04729d23",
+        "signature": "2c2c57cccf1d6aaae6ac34f0b1fb05028d4876af71f86ef633b7e1ec04729d23",
         "affectsGlobalScope": false
       },
       "../../../../../node_modules/@types/common-tags/index.d.ts": {
@@ -692,7 +697,8 @@
         "../../../../../node_modules/@types/node/fs.d.ts",
         "../../../../../node_modules/@types/node/path.d.ts",
         "../node_modules/acorn/dist/acorn.d.ts",
-        "../src/parse/python.ts"
+        "../src/parse/python.ts",
+        "../type/json.d.ts"
       ],
       "../src/parse/modules/binaryexpression.ts": [
         "../type/type.d.ts"
@@ -1550,6 +1556,7 @@
       "../src/parse/modules/print.ts",
       "../src/parse/modules/variabledeclaration.ts",
       "../src/parse/python.ts",
+      "../type/json.d.ts",
       "../type/type.d.ts",
       "../../../../../node_modules/@types/common-tags/index.d.ts",
       "../../../../../node_modules/@types/hast/index.d.ts",

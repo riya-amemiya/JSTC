@@ -2,6 +2,7 @@ import * as acorn from 'acorn';
 import fs from 'fs'
 import path from 'path'
 import python from './parse/python';
+import v from "./../package.json"
 function check(file: string): boolean
 {
     let hasfaile = false;
@@ -45,9 +46,9 @@ if (process.argv.findIndex(item => item === "-t") !== 2)
             out = process.argv[process.argv.findIndex(item => item === "-out") + 1]
         }
     }
-    if (process.argv.findIndex(item => item === "-v") !== 2)
+    if (process.argv.findIndex(item => item === "-v") !== -1)
     {
-        console.log(JSON.parse(read(path.resolve("package.json"))).version);
+        console.log(v.version);
     }
     if (!check(path.resolve(out)))
     {
