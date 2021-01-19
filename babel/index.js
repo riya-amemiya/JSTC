@@ -50,7 +50,7 @@ if (process.argv.findIndex(function (item) {
     allowAwaitOutsideFunction: true,
     allowImportExportEverywhere: true
   });
-  var out = "js_tcbuild";
+  var out = "jstc＿build";
 
   if (process.argv.findIndex(function (item) {
     return item === "-out";
