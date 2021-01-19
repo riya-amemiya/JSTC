@@ -197,8 +197,8 @@
         "affectsGlobalScope": true
       },
       "../node_modules/acorn/dist/acorn.d.ts": {
-        "version": "fd98a2934a3fb491f2ef8ee73420b330eae54ee1144f05635db7ad73c9186ad8",
-        "signature": "fd98a2934a3fb491f2ef8ee73420b330eae54ee1144f05635db7ad73c9186ad8",
+        "version": "1664fd1eef2391dc0f0077852b35e74f720d40b98501937760714f4e19bf72b3",
+        "signature": "1664fd1eef2391dc0f0077852b35e74f720d40b98501937760714f4e19bf72b3",
         "affectsGlobalScope": false
       },
       "../type/type.d.ts": {
@@ -212,8 +212,8 @@
         "affectsGlobalScope": false
       },
       "../src/parse/modules/binaryexpression.ts": {
-        "version": "feeb037364f333705bcac664338bdbee46ce2758983ec1734bf2de319a9b0124",
-        "signature": "113e4a3ad44f6830ecb3556aadd781c4ed66f5917b6a6f971ec1c486668fbf3d",
+        "version": "d565efd26b5bd3e6e15d3263fa77194ed9799e5335d21f64766a97fe920595e4",
+        "signature": "87497e7fb17539c920e1c962f2db1b5638589e262b8eb0d0865e680dbd373daa",
         "affectsGlobalScope": false
       },
       "../src/parse/modules/function.ts": {
@@ -232,7 +232,7 @@
         "affectsGlobalScope": false
       },
       "../src/index.ts": {
-        "version": "29205cabaa79703e86b92571cfd7309c3bca9b37c70b9729f9831d5ca5686d21",
+        "version": "f00df017c9a1c16066f33b80bfb5958978a5451cb2e4c4cb7a763cc241c46fe2",
         "signature": "f667f6b1d66ba55f0dcd27f5ff050063fecfe289bad00e8c5d48344a775c1439",
         "affectsGlobalScope": false
       },
@@ -695,7 +695,7 @@
         "../src/parse/python.ts"
       ],
       "../src/parse/modules/binaryexpression.ts": [
-        "../node_modules/acorn/dist/acorn.d.ts"
+        "../type/type.d.ts"
       ],
       "../src/parse/modules/function.ts": [
         "../src/parse/modules/binaryexpression.ts",
@@ -1102,7 +1102,7 @@
     },
     "exportedModulesMap": {
       "../src/parse/modules/binaryexpression.ts": [
-        "../node_modules/acorn/dist/acorn.d.ts"
+        "../type/type.d.ts"
       ],
       "../src/parse/modules/function.ts": [
         "../type/type.d.ts"
