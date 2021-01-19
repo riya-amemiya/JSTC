@@ -34,7 +34,7 @@ if (process.argv.findIndex(item => item === "-t") !== 2)
         allowAwaitOutsideFunction: true,
         allowImportExportEverywhere: true
     })
-    let out: string = "js_tcbuild"
+    let out: string = "jstc＿build"
     if (process.argv.findIndex(item => item === "-out") !== -1)
     {
         if (!process.argv[process.argv.findIndex(item => item === "-out") + 1])
