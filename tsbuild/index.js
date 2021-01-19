@@ -28,7 +28,6 @@ if (process.argv.findIndex(function (item) { return item === "-t"; }) !== 2) {
         allowAwaitOutsideFunction: true,
         allowImportExportEverywhere: true
     });
-    console.log(parse);
     var out = "jstc＿build";
     if (process.argv.findIndex(function (item) { return item === "-out"; }) !== -1) {
         if (!process.argv[process.argv.findIndex(function (item) { return item === "-out"; }) + 1]) {
@@ -38,6 +37,9 @@ if (process.argv.findIndex(function (item) { return item === "-t"; }) !== 2) {
             out = process.argv[process.argv.findIndex(function (item) { return item === "-out"; }) + 1];
         }
     }
+    if (process.argv.findIndex(function (item) { return item === "-v"; }) !== 2) {
+        console.log(JSON.parse(read(path.resolve("package.json"))).version);
+    }
     if (!check(path.resolve(out))) {
         fs.mkdir(path.resolve(out), function (err) {
             if (err) {
@@ -46,7 +48,7 @@ if (process.argv.findIndex(function (item) { return item === "-t"; }) !== 2) {
         });
     }
     fs.writeFileSync(path.resolve(out) + "/index.py", python(parse).code, "utf8");
-    console.log(python(parse));
+    console.log(python(parse).code);
     if (process.argv.findIndex(function (item) { return item === "-t"; }) !== -1) {
         fs.writeFileSync(path.resolve(path.resolve(out) + "/build.json"), parse ? JSON.stringify(parse) : "{}", 'utf8');
     }

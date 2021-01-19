@@ -45,6 +45,10 @@ if (process.argv.findIndex(item => item === "-t") !== 2)
             out = process.argv[process.argv.findIndex(item => item === "-out") + 1]
         }
     }
+    if (process.argv.findIndex(item => item === "-v") !== 2)
+    {
+        console.log(JSON.parse(read(path.resolve("package.json"))).version);
+    }
     if (!check(path.resolve(out)))
     {
         fs.mkdir(path.resolve(out), (err): void =>
