@@ -197,8 +197,8 @@
         "affectsGlobalScope": true
       },
       "../node_modules/acorn/dist/acorn.d.ts": {
-        "version": "1664fd1eef2391dc0f0077852b35e74f720d40b98501937760714f4e19bf72b3",
-        "signature": "1664fd1eef2391dc0f0077852b35e74f720d40b98501937760714f4e19bf72b3",
+        "version": "fd98a2934a3fb491f2ef8ee73420b330eae54ee1144f05635db7ad73c9186ad8",
+        "signature": "fd98a2934a3fb491f2ef8ee73420b330eae54ee1144f05635db7ad73c9186ad8",
         "affectsGlobalScope": false
       },
       "../type/type.d.ts": {
