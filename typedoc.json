@@ -1,0 +1,10 @@
+{
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "out": "./out",
+    "gitRevision": "https://github.com/riya81/JSTC",
+    "gaID": "G-J156R287FT",
+    "gaSite": "JSTC",
+    "hideGenerator": true,
+    "theme": "minimal"
+}

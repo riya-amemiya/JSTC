@@ -11,6 +11,11 @@ var __values = (this && this.__values) || function(o) {
 };
 import fn from "./modules/function";
 import print from "./modules/print";
+/**
+ * @module python
+ * @param {acorn.Node} codes
+ * @returns {acorn.OUT} out
+ */
 export default function python(codes) {
     var e_1, _a;
     var out = { code: "", cash: { code: "", "return": "" } };

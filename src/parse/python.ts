@@ -1,14 +1,14 @@
 import acorn from "../../type/type"
 import fn from "./modules/function"
 import print from "./modules/print"
-export default function python(codes: acorn.Node):
-    {
-        code: string; cash: {
-            code: string; return: string;
-        };
-    }
+/**
+ * @module python
+ * @param {acorn.Node} codes
+ * @returns {acorn.OUT} 変換結果を出力
+ */
+export default function python(codes: acorn.Node): acorn.OUT
 {
-    let out: { code: string, cash: { code: string, return: string } } = { code: "", cash: { code: "", return: "" } };
+    let out: acorn.OUT = { code: "", cash: { code: "", return: "" } };
     for (const code of codes.body)
     {
         if (code.type === "FunctionDeclaration")

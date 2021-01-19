@@ -2,6 +2,14 @@ export as namespace acorn
 export = acorn
 declare namespace acorn
 {
+    interface OUT
+    {
+        code: string;
+        cash: {
+            code: string;
+            return: string;
+        }
+    }
     function parse(input: string, options: Options): Node
 
     function parseExpressionAt(input: string, pos: number, options: Options): Node

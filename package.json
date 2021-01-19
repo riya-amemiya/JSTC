@@ -8,7 +8,9 @@
         "typescript": "tsc --build tsconfig.json",
         "babel": "./node_modules/.bin/babel src --extensions '.ts,.tsx' --out-dir babel && ./node_modules/.bin/babel tsbuild --extensions '.js' --out-dir build && ./node_modules/.bin/babili build -d min/build && ./node_modules/.bin/babili babel -d min/babel",
         "build": "npm run typescript && npm run babel",
-        "start": "npm run build && node build/index.js"
+        "start": "npm run build && node build/index.js",
+        "typedoc": "typedoc ./src/",
+        "deploy": "npm run typedoc && gh-pages -d out"
     },
     "keywords": [],
     "author": "",
@@ -22,6 +24,8 @@
         "@babel/preset-typescript": "^7.12.7",
         "babili": "^0.1.4",
         "fcc_typescript": "^1.0.8",
+        "gh-pages": "^3.1.0",
+        "typedoc": "^0.20.16",
         "typescript": "^4.1.3"
     },
     "dependencies": {

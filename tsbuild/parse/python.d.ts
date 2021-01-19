@@ -1,9 +1,8 @@
 import acorn from "../../type/type";
-export default function python(codes: acorn.Node): {
-    code: string;
-    cash: {
-        code: string;
-        return: string;
-    };
-};
+/**
+ * @module python
+ * @param {acorn.Node} codes
+ * @returns {acorn.OUT} out
+ */
+export default function python(codes: acorn.Node): acorn.OUT;
 //# sourceMappingURL=python.d.ts.map
