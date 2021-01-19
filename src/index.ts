@@ -29,7 +29,7 @@ if (!process.argv[2])
 }
 if (process.argv.findIndex(item => item === "-t") !== 2)
 {
-    const parse: any = acorn?.parse(read(path.resolve(process.argv[2])), {
+    const parse: any = acorn?.parse(read(path.resolve(path.resolve(process.argv[2]))), {
         ecmaVersion: 2020,
         allowAwaitOutsideFunction: true,
         allowImportExportEverywhere: true
