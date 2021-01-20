@@ -1,0 +1,1 @@
+{"version":3,"file":"api.d.ts","sourceRoot":"","sources":["../../src/api/api.ts"],"names":[],"mappings":"AACA,OAAO,MAAM,MAAM,mBAAmB,CAAC;AAQvC,iBAAS,KAAK,CAAC,IAAI,EAAE,MAAM,GAAG,OAAO,CAYpC;AAQD,iBAAS,IAAI,CAAC,IAAI,EAAE,MAAM,GAAG,MAAM,CAOlC;AACD,OAAO,EAAE,KAAK,EAAE,IAAI,EAAE,MAAM,EAAE,CAAA"}

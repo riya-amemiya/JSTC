@@ -1,4 +1,4 @@
-import acorn from "../../../type/type";
+import acorn from "../../../../type/type";
 declare const _default: (c: acorn.Body, out: {
     code: string;
     cash: {
@@ -13,4 +13,4 @@ declare const _default: (c: acorn.Body, out: {
     };
 };
 export default _default;
-//# sourceMappingURL=BinaryExpression.d.ts.map
+//# sourceMappingURL=VariableDeclaration.d.ts.map

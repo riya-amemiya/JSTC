@@ -1,6 +1,11 @@
-import acorn from "../../../type/type"
+import acorn from "../../../../type/type"
 import VariableDeclaration from "./VariableDeclaration"
 import BinaryExpression from "./BinaryExpression"
+/**
+ * @module functrion
+ * @param code
+ * @param out
+ */
 export default (code: acorn.Body3, out: { code: string, cash: { code: string, return: string } }): { code: string; cash: { code: string; return: string } } =>
 {
     let argument: { name: string[], out: string } = { name: [], out: "" }

@@ -1,4 +1,4 @@
-import acorn from "../../../type/type";
+import acorn from "../../../../type/type";
 declare const _default: (code: acorn.Body3, out: {
     code: string;
     cash: {

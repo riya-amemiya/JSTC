@@ -2,7 +2,7 @@ node_modules
 tsbuild
 src
 babel
-min
+build/
 demo
 js_tcbuild
 .vscode

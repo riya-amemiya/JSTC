@@ -1,4 +1,9 @@
-import acorn from "../../../type/type"
+import acorn from "../../../../type/type"
+/**
+ * @module BinaryExpression
+ * @param c
+ * @param out
+ */
 export default (c: acorn.Body, out: { code: string, cash: { code: string, return: string } }):
     {
         code: string; cash: {

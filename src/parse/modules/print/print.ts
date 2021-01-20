@@ -1,4 +1,4 @@
-import acorn from "../../../type/type"
+import acorn from "../../../../type/type"
 /**
  * @module print
  * @param code

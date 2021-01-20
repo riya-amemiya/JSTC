@@ -206,34 +206,39 @@
         "signature": "e72b1e348fadfcb907fe781cb8ef80211a078ca333fd7d949258b943489d520b",
         "affectsGlobalScope": false
       },
-      "../src/parse/modules/variabledeclaration.ts": {
-        "version": "d00bebb41d4178e70508122c8ce1fb45f8bc61b614efc939f815fca27fd4a4fa",
-        "signature": "c87aca4de3df1e85933b4e272f8a8b6cf218fefed7756721a94595055f34b85a",
+      "../src/parse/modules/function/variabledeclaration.ts": {
+        "version": "bfba71ce1438552f16ddda87e97f378b3913a6675aed506284e52f9c5e56d80b",
+        "signature": "4d39b54baea1d842f4ef4d6e2d8f885e3184a259f571d855507fdcc6449b4022",
         "affectsGlobalScope": false
       },
-      "../src/parse/modules/binaryexpression.ts": {
-        "version": "d565efd26b5bd3e6e15d3263fa77194ed9799e5335d21f64766a97fe920595e4",
-        "signature": "87497e7fb17539c920e1c962f2db1b5638589e262b8eb0d0865e680dbd373daa",
+      "../src/parse/modules/function/binaryexpression.ts": {
+        "version": "0e12f8e2244b239b0d8fc184b6d79723072bcfb45cb3036457b1ebd568133d00",
+        "signature": "af9daa1c11c885327b2c39fc35824cdaaf456acfcec20375eae1351615f485a1",
         "affectsGlobalScope": false
       },
-      "../src/parse/modules/function.ts": {
-        "version": "92e424ca1559c159dc830730d24da8ae0e6555ac216b79bfe7b36ff1a6587160",
-        "signature": "2d1e1436d7b2cb01279f2512cc65d0e07b8f178231d4fda3f3adf1b17a5513b8",
+      "../src/parse/modules/function/function.ts": {
+        "version": "b8fed773f6c7f558ca01994a57eec4f41413d5e2e7cf228f72b44723a68400f6",
+        "signature": "93e0c80692d3300d5b40f65aed505818ea5dbe23d283c8582173f464f8eebf20",
         "affectsGlobalScope": false
       },
-      "../src/parse/modules/print.ts": {
-        "version": "fad3ef0b543b2d8c62fbb47a7f7c538272e61a3df1953fa7d737e164e0352e96",
-        "signature": "b37968384b780f9513a238d7fa726e4efcb8122b984997ba4dabeae07cdaf79f",
+      "../src/parse/modules/print/print.ts": {
+        "version": "405cce3b26118ec920625e3d8a7dd0246602da01fd86b45b2c8f5f35b62a8565",
+        "signature": "01639d0639385ad9d596c49e9128662978743d4909b896b7dd244d70be73601e",
         "affectsGlobalScope": false
       },
       "../src/parse/python.ts": {
-        "version": "ba7c74041165239358273c223315deec85806cb15f9027ca455dd713c9e9a75b",
-        "signature": "e7bafd7e454b58de996021a379640cbc32d05811f490034d75c1f99ee87e96d2",
+        "version": "2a16810c5fa55185477779f2e071052607d5e477de770ba8fdda9f6b814455e2",
+        "signature": "bc9d4cef6f07dfec8d141fb093ae23d899c1688b0372e1bfd2904cc25ac886e2",
+        "affectsGlobalScope": false
+      },
+      "../src/api/api.ts": {
+        "version": "7dfcbdcde16e86af9c39680d7add66152107e8cde71c16cfe4913a7eb2ce3383",
+        "signature": "0078f3d01beedf65eafe9d67ab724b69a599d9db3a9cd7a9cafd1e56061b52fd",
         "affectsGlobalScope": false
       },
       "../src/index.ts": {
-        "version": "d70f1cc8c7d6b24098c6f476a2ce5d03be9fb3b68e26a7348d4ca6df05cb468e",
-        "signature": "f667f6b1d66ba55f0dcd27f5ff050063fecfe289bad00e8c5d48344a775c1439",
+        "version": "7c578e4b8bfc69a370e386a0392b25bc9dadfbb07891e06aab444080085c5f95",
+        "signature": "70f93503f648e54c19ddce9f54aa07188c2f9dd1f7b35fb4deff77cdaa50e8b1",
         "affectsGlobalScope": false
       },
       "../type/json.d.ts": {
@@ -663,7 +668,7 @@
       "module": 99,
       "jsx": 2,
       "noEmit": false,
-      "removeComments": false,
+      "removeComments": true,
       "allowJs": true,
       "strict": true,
       "alwaysStrict": true,
@@ -693,30 +698,34 @@
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
+      "../src/api/api.ts": [
+        "../../../../../node_modules/@types/node/fs.d.ts",
+        "../src/parse/python.ts"
+      ],
       "../src/index.ts": [
         "../../../../../node_modules/@types/node/fs.d.ts",
         "../../../../../node_modules/@types/node/path.d.ts",
         "../node_modules/acorn/dist/acorn.d.ts",
-        "../src/parse/python.ts",
+        "../src/api/api.ts",
         "../type/json.d.ts"
       ],
-      "../src/parse/modules/binaryexpression.ts": [
+      "../src/parse/modules/function/binaryexpression.ts": [
         "../type/type.d.ts"
       ],
-      "../src/parse/modules/function.ts": [
-        "../src/parse/modules/binaryexpression.ts",
-        "../src/parse/modules/variabledeclaration.ts",
+      "../src/parse/modules/function/function.ts": [
+        "../src/parse/modules/function/binaryexpression.ts",
+        "../src/parse/modules/function/variabledeclaration.ts",
         "../type/type.d.ts"
       ],
-      "../src/parse/modules/print.ts": [
+      "../src/parse/modules/function/variabledeclaration.ts": [
         "../type/type.d.ts"
       ],
-      "../src/parse/modules/variabledeclaration.ts": [
+      "../src/parse/modules/print/print.ts": [
         "../type/type.d.ts"
       ],
       "../src/parse/python.ts": [
-        "../src/parse/modules/function.ts",
-        "../src/parse/modules/print.ts",
+        "../src/parse/modules/function/function.ts",
+        "../src/parse/modules/print/print.ts",
         "../type/type.d.ts"
       ],
       "../../../../../node_modules/@types/hast/index.d.ts": [
@@ -1107,16 +1116,19 @@
       ]
     },
     "exportedModulesMap": {
-      "../src/parse/modules/binaryexpression.ts": [
+      "../src/api/api.ts": [
+        "../src/parse/python.ts"
+      ],
+      "../src/parse/modules/function/binaryexpression.ts": [
         "../type/type.d.ts"
       ],
-      "../src/parse/modules/function.ts": [
+      "../src/parse/modules/function/function.ts": [
         "../type/type.d.ts"
       ],
-      "../src/parse/modules/print.ts": [
+      "../src/parse/modules/function/variabledeclaration.ts": [
         "../type/type.d.ts"
       ],
-      "../src/parse/modules/variabledeclaration.ts": [
+      "../src/parse/modules/print/print.ts": [
         "../type/type.d.ts"
       ],
       "../src/parse/python.ts": [
@@ -1550,11 +1562,12 @@
       "../node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts",
       "../node_modules/typescript/lib/lib.es5.d.ts",
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
+      "../src/api/api.ts",
       "../src/index.ts",
-      "../src/parse/modules/binaryexpression.ts",
-      "../src/parse/modules/function.ts",
-      "../src/parse/modules/print.ts",
-      "../src/parse/modules/variabledeclaration.ts",
+      "../src/parse/modules/function/binaryexpression.ts",
+      "../src/parse/modules/function/function.ts",
+      "../src/parse/modules/function/variabledeclaration.ts",
+      "../src/parse/modules/print/print.ts",
       "../src/parse/python.ts",
       "../type/json.d.ts",
       "../type/type.d.ts",

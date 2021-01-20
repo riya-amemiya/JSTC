@@ -37,100 +37,60 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 import * as acorn from 'acorn';
 import fs from 'fs';
 import path from 'path';
-import python from './parse/python';
-/**
- *
- * @param {string} file
- * Check if the file exists.
- * @returns {boolean} If there is a file true
- */
-function check(file) {
-    var hasfaile = false;
-    try {
-        fs.statSync(file);
-        hasfaile = true;
+import { check, read, python } from "./api/api";
+var main = function () {
+    if (!process.argv[2]) {
+        console.log("引数が不足してます\n第一引数にファイルパスを指定して下さい");
     }
-    catch (err) {
-        hasfaile = false;
-    }
-    return hasfaile;
-}
-/**
- *
- * @param {string} file
- * read a file
- * @returns {string} Reads a file and returns it as a string
- */
-function read(file) {
-    if (check(file)) {
-        return fs.readFileSync(file, 'utf8');
-    }
-    return "";
-}
-//引数のチェック
-if (!process.argv[2]) {
-    console.log("引数が不足してます\n第一引数にファイルパスを指定して下さい");
-}
-//第1引数のチェック
-if (process.argv.findIndex(function (item) { return item === "-t"; }) !== 2) {
-    /**
-     * @const
-     * @type {any}
-     */
-    var parse = acorn === null || acorn === void 0 ? void 0 : acorn.parse(read(path.resolve(path.resolve(process.argv[2]))), {
-        ecmaVersion: 2020,
-        allowAwaitOutsideFunction: true,
-        allowImportExportEverywhere: true
-    });
-    /**
-     * @type {string}
-     */
-    //出力先の変数
-    var out = "jstc＿build";
-    //outオプションの確認
-    if (process.argv.findIndex(function (item) { return item === "-out"; }) !== -1 && process.argv.findIndex(function (item) { return item === "-out"; }) !== 2) {
-        if (!process.argv[process.argv.findIndex(function (item) { return item === "-out"; }) + 1]) {
-            console.log("引数が不足しています");
+    if (process.argv.findIndex(function (item) { return item === "-t"; }) !== 2) {
+        var parse = acorn === null || acorn === void 0 ? void 0 : acorn.parse(read(path.resolve(path.resolve(process.argv[2]))), {
+            ecmaVersion: 2020,
+            allowAwaitOutsideFunction: true,
+            allowImportExportEverywhere: true
+        });
+        var out = "jstc＿build";
+        if (process.argv.findIndex(function (item) { return item === "-v"; }) !== -1 && process.argv.findIndex(function (item) { return item === "-v"; }) !== 2) {
+            (function () {
+                return __awaiter(this, void 0, void 0, function () {
+                    var v;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4, import("./../package.json")];
+                            case 1:
+                                v = _a.sent();
+                                console.log(v.version);
+                                return [2];
+                        }
+                    });
+                });
+            }());
         }
-        else {
-            out = process.argv[process.argv.findIndex(function (item) { return item === "-out"; }) + 1];
-        }
-    }
-    //versionオプションの確認
-    (function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var v;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (!(process.argv.findIndex(function (item) { return item === "-v"; }) !== -1 && process.argv.findIndex(function (item) { return item === "-v"; }) !== 2)) return [3 /*break*/, 2];
-                        return [4 /*yield*/, import("./../package.json")];
-                    case 1:
-                        v = _a.sent();
-                        console.log(v.version);
-                        _a.label = 2;
-                    case 2: return [2 /*return*/];
+        if (!check(path.resolve(out))) {
+            fs.mkdir(path.resolve(out), function (err) {
+                if (err) {
+                    throw err;
                 }
             });
-        });
-    }());
-    //out先のフォルダが無かったら作成
-    if (!check(path.resolve(out))) {
-        fs.mkdir(path.resolve(out), function (err) {
-            if (err) {
-                throw err;
+        }
+        if (process.argv.findIndex(function (item) { return item === "-out"; }) !== -1 && process.argv.findIndex(function (item) { return item === "-out"; }) !== 2) {
+            if (!process.argv[process.argv.findIndex(function (item) { return item === "-out"; }) + 1]) {
+                console.log("引数が不足しています");
             }
-        });
+            else {
+                out = process.argv[process.argv.findIndex(function (item) { return item === "-out"; }) + 1];
+            }
+        }
+        if (process.argv.findIndex(function (item) { return item === "-not"; }) === -1) {
+            fs.writeFileSync(path.resolve(out) + "/index.py", python(parse).code, "utf8");
+            console.log(python(parse).code);
+        }
+        if (process.argv.findIndex(function (item) { return item === "-t"; }) !== -1) {
+            fs.writeFileSync(path.resolve(path.resolve(out) + "/build.json"), parse ? JSON.stringify(parse) : "{}", 'utf8');
+        }
     }
-    //js解析結果からpythonに変換して出力
-    fs.writeFileSync(path.resolve(out) + "/index.py", python(parse).code, "utf8");
-    console.log(python(parse).code);
-    //解析結果出力オプションの確認
-    if (process.argv.findIndex(function (item) { return item === "-t"; }) !== -1) {
-        fs.writeFileSync(path.resolve(path.resolve(out) + "/build.json"), parse ? JSON.stringify(parse) : "{}", 'utf8');
+    else {
+        console.log("第一引数にはファイルパスを指定して下さい");
     }
-}
-else {
-    console.log("第一引数にはファイルパスを指定して下さい");
-}
+};
+export { main };
 //# sourceMappingURL=index.js.map

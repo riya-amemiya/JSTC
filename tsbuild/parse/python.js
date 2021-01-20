@@ -9,13 +9,8 @@ var __values = (this && this.__values) || function(o) {
     };
     throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
-import fn from "./modules/function";
-import print from "./modules/print";
-/**
- * @module python
- * @param {acorn.Node} codes
- * @returns {acorn.OUT} out
- */
+import fn from "./modules/function/function";
+import print from "./modules/print/print";
 export default function python(codes) {
     var e_1, _a;
     var out = { code: "", cash: { code: "", "return": "" } };

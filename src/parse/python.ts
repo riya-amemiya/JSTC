@@ -1,6 +1,6 @@
 import acorn from "../../type/type"
-import fn from "./modules/function"
-import print from "./modules/print"
+import fn from "./modules/function/function"
+import print from "./modules/print/print"
 /**
  * @module python
  * @param {acorn.Node} codes
