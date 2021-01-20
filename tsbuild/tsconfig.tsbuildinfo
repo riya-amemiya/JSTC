@@ -196,9 +196,9 @@
         "signature": "89bf2b7a601b73ea4311eda9c41f86a58994fec1bee3b87c4a14d68d9adcdcbd",
         "affectsGlobalScope": true
       },
-      "../node_modules/acorn/dist/acorn.d.ts": {
-        "version": "fd98a2934a3fb491f2ef8ee73420b330eae54ee1144f05635db7ad73c9186ad8",
-        "signature": "fd98a2934a3fb491f2ef8ee73420b330eae54ee1144f05635db7ad73c9186ad8",
+      "../../../../../node_modules/acorn/dist/acorn.d.ts": {
+        "version": "6b367f2f5a28a345367c022e500e86528f6f25a5a4e518b71f56fe08eda1809f",
+        "signature": "6b367f2f5a28a345367c022e500e86528f6f25a5a4e518b71f56fe08eda1809f",
         "affectsGlobalScope": false
       },
       "../type/type.d.ts": {
@@ -705,7 +705,7 @@
       "../src/index.ts": [
         "../../../../../node_modules/@types/node/fs.d.ts",
         "../../../../../node_modules/@types/node/path.d.ts",
-        "../node_modules/acorn/dist/acorn.d.ts",
+        "../../../../../node_modules/acorn/dist/acorn.d.ts",
         "../src/api/api.ts",
         "../type/json.d.ts"
       ],
@@ -1522,7 +1522,6 @@
       ]
     },
     "semanticDiagnosticsPerFile": [
-      "../node_modules/acorn/dist/acorn.d.ts",
       "../node_modules/typescript/lib/lib.dom.d.ts",
       "../node_modules/typescript/lib/lib.es2015.collection.d.ts",
       "../node_modules/typescript/lib/lib.es2015.core.d.ts",
@@ -1653,7 +1652,8 @@
       "../../../../../node_modules/@types/warning/index.d.ts",
       "../../../../../node_modules/@types/yargs-parser/index.d.ts",
       "../../../../../node_modules/@types/yargs/index.d.ts",
-      "../../../../../node_modules/@types/yoga-layout/index.d.ts"
+      "../../../../../node_modules/@types/yoga-layout/index.d.ts",
+      "../../../../../node_modules/acorn/dist/acorn.d.ts"
     ]
   },
   "version": "4.1.3"
