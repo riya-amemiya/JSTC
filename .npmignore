@@ -4,7 +4,11 @@ src
 babel
 build/
 demo
-js_tcbuild
+jstcbuild
 .vscode
 test
 out
+typedoc.json
+tsconfig.json
+.babelrc
+type
