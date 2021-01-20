@@ -4,7 +4,7 @@ src
 babel
 build/
 demo
-jstc_build
+jstc_build/
 .vscode
 test
 out
