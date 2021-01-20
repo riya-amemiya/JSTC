@@ -1,7 +1,7 @@
 node_modules
 .vscode
 test
-jstc＿build
+jstc_build
 min
 build
 babel
