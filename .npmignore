@@ -2,9 +2,13 @@ node_modules
 tsbuild
 src
 babel
-min
+build/
 demo
-js_tcbuild
+jstc_build/
 .vscode
 test
 out
+typedoc.json
+tsconfig.json
+.babelrc
+type

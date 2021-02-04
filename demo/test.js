@@ -1,7 +1,10 @@
 function sum(a, b) {
-    let c = 2
-    console.log(c * "Hello");
+    let c = 2;
+    console.log(c);
     console.log("Hello");
-    return a * b
+    console.log("hello");
+    return a + b
 }
+const a = 1;
+console.log(a);
 console.log(sum(2, 3));

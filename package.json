@@ -1,12 +1,12 @@
 {
     "name": "cli_jstc",
-    "version": "1.0.11",
+    "version": "1.0.17",
     "description": "",
-    "main": "build/index.js",
+    "main": "min/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "typescript": "tsc --build tsconfig.json",
-        "babel": "./node_modules/.bin/babel src --extensions '.ts,.tsx' --out-dir babel && ./node_modules/.bin/babel tsbuild --extensions '.js' --out-dir build && ./node_modules/.bin/babili build -d min/build && ./node_modules/.bin/babili babel -d min/babel",
+        "babel": "./node_modules/.bin/babel src --extensions '.ts,.tsx' --out-dir babel && ./node_modules/.bin/babel tsbuild --extensions '.js' --out-dir build && ./node_modules/.bin/babili build -d min",
         "build": "npm run typescript && npm run babel",
         "start": "npm run build && node build/index.js",
         "typedoc": "typedoc ./src/",
