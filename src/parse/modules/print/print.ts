@@ -4,7 +4,7 @@ import acorn from "../../../../type/type"
  * @param code
  * @param out
  */
-export default ( code: acorn.Body3, out: { code: string, cash: { code: string, return: string } }, conversion: { Literal: ( data: string ) => string, Identifier: ( data: string[] ) => string } ): acorn.OUT =>
+export default ( code: acorn.Body3, out: { code: string, cash: { code: string, return: string, Identifier: { name: string, value: string }[] } }, conversion: { Literal: ( data: string ) => string, FunIdentifier: ( data: string[] ) => string, Identifier: ( data: string ) => string } ): { code: string; cash: { code: string; return: string; Identifier: { name: string, value: string }[] } } =>
 {
     if ( code.expression.type === "CallExpression" )
     {
@@ -18,7 +18,7 @@ export default ( code: acorn.Body3, out: { code: string, cash: { code: string, r
                     {
                         if ( argument.type === "Literal" )
                         {
-                            out.code += conversion.Literal( argument.raw )
+                            out.code += conversion.Literal( `${ argument.raw }` )
                         }
                         if ( argument.type === "CallExpression" )
                         {
@@ -38,8 +38,12 @@ export default ( code: acorn.Body3, out: { code: string, cash: { code: string, r
                                     }
                                     _argument.out += `${ _argument.name[ i ] }${ t }`
                                 }
-                                out.code += conversion.Identifier( [ argument.callee.name, _argument.out ] )
+                                out.code += conversion.FunIdentifier( [ argument.callee.name, _argument.out ] )
                             }
+                        }
+                        if ( argument?.type === "Identifier" )
+                        {
+                            out.code += conversion.Identifier( argument.name )
                         }
                         if ( argument?.type === "BinaryExpression" )
                         {
