@@ -1,5 +1,6 @@
 import fs from 'fs'
-import python from './../parse/python';
+import python from '../parse/modes/python';
+import go from '../parse/modes/go';
 /**
      *
      * @module check
@@ -7,14 +8,14 @@ import python from './../parse/python';
      * Check if the file exists.
      * @returns {boolean} If there is a file true
      */
-function check(file: string): boolean
+function check ( file: string ): boolean
 {
     let hasfaile = false;
     try
     {
-        fs.statSync(file);
+        fs.statSync( file );
         hasfaile = true;
-    } catch (err)
+    } catch ( err )
     {
         hasfaile = false;
     }
@@ -27,12 +28,12 @@ function check(file: string): boolean
  * read a file
  * @returns {string} Reads a file and returns it as a string
  */
-function read(file: string): string
+function read ( file: string ): string
 {
-    if (check(file))
+    if ( check( file ) )
     {
-        return fs.readFileSync(file, 'utf8');
+        return fs.readFileSync( file, 'utf8' );
     }
     return "";
 }
-export { check, read, python }
+export { check, read, python, go }
