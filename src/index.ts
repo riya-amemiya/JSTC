@@ -1,7 +1,7 @@
 import * as acorn from 'acorn';
 import fs from 'fs'
 import path from 'path'
-import { check, read, python, go } from "./api/api"
+import { check, read } from "./api/api"
 /**
  * Converting Javascript to Python
  * @module main
@@ -40,7 +40,7 @@ const main = (): void =>
             {
                 const v = await import( "./../package.json" )
                 console.log( v.version );
-            }() )
+            } )()
         }
         //out先のフォルダが無かったら作成
         if ( !check( path.resolve( out ) ) )
@@ -79,15 +79,19 @@ const main = (): void =>
                     if ( mode == "py" || mode == "python" )
                     {
                         //js解析結果からpythonに変換して出力
-                        fs.writeFileSync( `${ path.resolve( out ) }/index.py`, python( parse ).code, "utf8" )
-                        console.log( python( parse ).code );
+                        ( async () =>
+                        {
+                            const { python } = await import( "./api/api" )
+                            fs.writeFileSync( `${ path.resolve( out ) }/index.py`, python( parse ).code, "utf8" )
+                            console.log( python( parse ).code );
+                        } )()
                     }
-                    if ( mode == "go" )
-                    {
-                        //js解析結果からpythonに変換して出力
-                        fs.writeFileSync( `${ path.resolve( out ) }/index.go`, go( parse ).code, "utf8" )
-                        console.log( go( parse ).code );
-                    }
+                    // if ( mode == "go" )
+                    // {
+                    //     //js解析結果からpythonに変換して出力
+                    //     fs.writeFileSync( `${ path.resolve( out ) }/index.go`, go( parse ).code, "utf8" )
+                    //     console.log( go( parse ).code );
+                    // }
                 }
             }
         }

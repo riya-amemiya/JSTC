@@ -8,16 +8,17 @@ declare namespace acorn
         cash: {
             code: string;
             return: string;
+            Identifier: { name: string, value: string }[]
         }
     }
-    function parse(input: string, options: Options): Node
+    function parse ( input: string, options: Options ): Node
 
-    function parseExpressionAt(input: string, pos: number, options: Options): Node
+    function parseExpressionAt ( input: string, pos: number, options: Options ): Node
 
-    function tokenizer(input: string, options: Options):
+    function tokenizer ( input: string, options: Options ):
         {
-            getToken(): Token
-            [Symbol.iterator](): Iterator<Token>
+            getToken (): Token
+            [ Symbol.iterator ] (): Iterator<Token>
         }
     interface RootObject
     {
@@ -39,7 +40,9 @@ declare namespace acorn
         async: boolean;
         params: Id[];
         body: Body2;
-        callee: Callee
+        callee: Callee;
+        kind?: string;
+        declarations: Declaration[];
     }
 
     interface Body2
@@ -186,6 +189,7 @@ declare namespace acorn
         left: Argument,
         right: Argument
         callee: Callee
+        name: string
     }
 
     interface Callee
@@ -215,19 +219,19 @@ declare namespace acorn
     {
         ecmaVersion: 3 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 'latest'
         sourceType?: 'script' | 'module'
-        onInsertedSemicolon?: (lastTokEnd: number, lastTokEndLoc?: Position) => void
-        onTrailingComma?: (lastTokEnd: number, lastTokEndLoc?: Position) => void
+        onInsertedSemicolon?: ( lastTokEnd: number, lastTokEndLoc?: Position ) => void
+        onTrailingComma?: ( lastTokEnd: number, lastTokEndLoc?: Position ) => void
         allowReserved?: boolean | 'never'
         allowReturnOutsideFunction?: boolean
         allowImportExportEverywhere?: boolean
         allowAwaitOutsideFunction?: boolean
         allowHashBang?: boolean
         locations?: boolean
-        onToken?: ((token: Token) => any) | Token[]
-        onComment?: ((
+        onToken?: ( ( token: Token ) => any ) | Token[]
+        onComment?: ( (
             isBlock: boolean, text: string, start: number, end: number, startLoc?: Position,
             endLoc?: Position
-        ) => void) | Comment[]
+        ) => void ) | Comment[]
         ranges?: boolean
         program?: Node
         sourceFile?: string
@@ -237,30 +241,30 @@ declare namespace acorn
 
     class Parser
     {
-        constructor(options: Options, input: string, startPos?: number)
-        parse(this: Parser): Node
-        static parse(this: typeof Parser, input: string, options: Options): Node
-        static parseExpressionAt(this: typeof Parser, input: string, pos: number, options: Options): Node
-        static tokenizer(this: typeof Parser, input: string, options: Options):
+        constructor ( options: Options, input: string, startPos?: number )
+        parse ( this: Parser ): Node
+        static parse ( this: typeof Parser, input: string, options: Options ): Node
+        static parseExpressionAt ( this: typeof Parser, input: string, pos: number, options: Options ): Node
+        static tokenizer ( this: typeof Parser, input: string, options: Options ):
             {
-                getToken(): Token
-                [Symbol.iterator](): Iterator<Token>
+                getToken (): Token
+                [ Symbol.iterator ] (): Iterator<Token>
             }
-        static extend(this: typeof Parser, ...plugins: ((BaseParser: typeof Parser) => typeof Parser)[]): typeof Parser
+        static extend ( this: typeof Parser, ...plugins: ( ( BaseParser: typeof Parser ) => typeof Parser )[] ): typeof Parser
     }
 
     interface Position { line: number; column: number; offset: number }
 
     const defaultOptions: Options
 
-    function getLineInfo(input: string, offset: number): Position
+    function getLineInfo ( input: string, offset: number ): Position
 
     class SourceLocation
     {
         start: Position
         end: Position
         source?: string | null
-        constructor(p: Parser, start: Position, end: Position)
+        constructor ( p: Parser, start: Position, end: Position )
     }
 
     class Node
@@ -270,9 +274,9 @@ declare namespace acorn
         end: number
         loc?: SourceLocation
         sourceFile?: string
-        range?: [number, number]
+        range?: [ number, number ]
         body: Body3[]
-        constructor(parser: Parser, pos: number, loc?: SourceLocation)
+        constructor ( parser: Parser, pos: number, loc?: SourceLocation )
     }
 
     class TokenType
@@ -286,8 +290,8 @@ declare namespace acorn
         prefix: boolean
         postfix: boolean
         binop: number
-        updateContext?: (prevType: TokenType) => void
-        constructor(label: string, conf?: any)
+        updateContext?: ( prevType: TokenType ) => void
+        constructor ( label: string, conf?: any )
     }
 
     const tokTypes: {
@@ -368,7 +372,7 @@ declare namespace acorn
 
     class TokContext
     {
-        constructor(token: string, isExpr: boolean, preserveSpace: boolean, override?: (p: Parser) => void)
+        constructor ( token: string, isExpr: boolean, preserveSpace: boolean, override?: ( p: Parser ) => void )
     }
 
     const tokContexts: {
@@ -381,9 +385,9 @@ declare namespace acorn
         f_expr: TokContext
     }
 
-    function isIdentifierStart(code: number, astral?: boolean): boolean
+    function isIdentifierStart ( code: number, astral?: boolean ): boolean
 
-    function isIdentifierChar(code: number, astral?: boolean): boolean
+    function isIdentifierChar ( code: number, astral?: boolean ): boolean
 
     interface AbstractToken
     {
@@ -396,7 +400,7 @@ declare namespace acorn
         start: number
         end: number
         loc?: SourceLocation
-        range?: [number, number]
+        range?: [ number, number ]
     }
 
     class Token
@@ -406,11 +410,11 @@ declare namespace acorn
         start: number
         end: number
         loc?: SourceLocation
-        range?: [number, number]
-        constructor(p: Parser)
+        range?: [ number, number ]
+        constructor ( p: Parser )
     }
 
-    function isNewLine(code: number): boolean
+    function isNewLine ( code: number ): boolean
 
     const lineBreak: RegExp
 

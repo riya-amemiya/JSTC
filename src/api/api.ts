@@ -1,6 +1,8 @@
 import fs from 'fs'
 import python from '../parse/modes/python';
-import go from '../parse/modes/go';
+import variable from "../parse/modules/variable/variable"
+import print from "../parse/modules/print/print"
+import Function from "../parse/modules/function/function"
 /**
      *
      * @module check
@@ -36,4 +38,4 @@ function read ( file: string ): string
     }
     return "";
 }
-export { check, read, python, go }
+export { check, read, python, variable, print, Function }

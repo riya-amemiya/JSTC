@@ -6,8 +6,9 @@ import BinaryExpression from "./BinaryExpression"
  * @param code
  * @param out
  */
-export default ( code: acorn.Body3, out: { code: string, cash: { code: string, return: string } }, conversion: { Literal: ( data: string ) => string, BinaryExpression: ( data: string[] ) => string, Function: ( data: string[] ) => string, VariableDeclaration: ( data: [ string, number ] ) => string } ): { code: string; cash: { code: string; return: string } } =>
+export default ( code: acorn.Body3, out: { code: string, cash: { code: string, return: string, Identifier: { name: string, value: string }[] } }, conversion: { Literal: ( data: string ) => string, BinaryExpression: ( data: string[] ) => string, Function: ( data: string[] ) => string, VariableDeclaration: ( data: [ string, number ] ) => string, Kind: { let: ( data: string[] ) => string, const: ( data: string[] ) => string } } ) =>
 {
+    out.cash.code = ""
     let argument: { name: string[], out: string } = { name: [], out: "" }
     for ( const params of code.params )
     {
@@ -26,7 +27,7 @@ export default ( code: acorn.Body3, out: { code: string, cash: { code: string, r
     {
         if ( c.type === "VariableDeclaration" )
         {
-            out = VariableDeclaration( c, out, { VariableDeclaration: conversion.VariableDeclaration } )
+            out.cash.code += VariableDeclaration( c, out, { VariableDeclaration: conversion.VariableDeclaration, Kind: conversion.Kind } ).cash.code
         }
         if ( c.type === "ExpressionStatement" )
         {
@@ -41,11 +42,14 @@ export default ( code: acorn.Body3, out: { code: string, cash: { code: string, r
                             if ( c.expression.arguments[ 0 ].type === "Literal" )
                             {
                                 //out.cash.code += `print("${c.expression.arguments[0].value}");`
-                                out.cash.code += conversion.Literal( c.expression.arguments[ 0 ].value )
+                                out.cash.code += conversion.Literal( `"${ c.expression.arguments[ 0 ].value }"` )
                             }
                             else if ( c.expression.arguments[ 0 ].type === "BinaryExpression" )
                             {
                                 BinaryExpression( c, out, { BinaryExpression: conversion.BinaryExpression } )
+                            } else if ( c.expression.arguments[ 0 ].type === "Identifier" )
+                            {
+                                out.cash.code += conversion.Literal( c.expression.arguments[ 0 ].name )
                             }
                         }
                     }
