@@ -43,7 +43,14 @@ export default ( code: acorn.Body3, out: { code: string, cash: { code: string, r
                         }
                         if ( argument?.type === "Identifier" )
                         {
-                            out.code += conversion.Identifier( argument.name )
+                            if ( out.cash.Identifier.find( ( n ) => n.name === argument.name ) )
+                            {
+                                out.code += conversion.Identifier( argument.name.toUpperCase() )
+                            }
+                            else
+                            {
+                                out.code += conversion.Identifier( argument.name )
+                            }
                         }
                         if ( argument?.type === "BinaryExpression" )
                         {

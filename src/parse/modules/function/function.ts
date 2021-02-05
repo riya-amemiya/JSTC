@@ -1,6 +1,5 @@
 import acorn from "../../../../type/type"
 import VariableDeclaration from "./VariableDeclaration"
-import BinaryExpression from "./BinaryExpression"
 /**
  * @module functrion
  * @param code
@@ -46,7 +45,11 @@ export default ( code: acorn.Body3, out: { code: string, cash: { code: string, r
                             }
                             else if ( c.expression.arguments[ 0 ].type === "BinaryExpression" )
                             {
-                                BinaryExpression( c, out, { BinaryExpression: conversion.BinaryExpression } )
+                                ( async () =>
+                                {
+                                    const BinaryExpression = await import( "./BinaryExpression" )
+                                    BinaryExpression.default( c, out, { BinaryExpression: conversion.BinaryExpression } )
+                                } )()
                             } else if ( c.expression.arguments[ 0 ].type === "Identifier" )
                             {
                                 out.cash.code += conversion.Literal( c.expression.arguments[ 0 ].name )

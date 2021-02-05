@@ -1,21 +1,26 @@
-import * as acorn from 'acorn';
-import fs from 'fs'
-import path from 'path'
 import { check, read } from "./api/api"
 /**
  * Converting Javascript to Python
  * @module main
  */
-const main = (): void =>
+export default async (): Promise<1 | 0> =>
 {
-
+    const acorn = await import( "acorn" )
+    const fs = await import( "fs" )
+    const path = await import( "path" )
     //引数のチェック
     if ( !process.argv[ 2 ] )
     {
         console.log( "引数が不足してます\n第一引数にファイルパスを指定して下さい" );
+        return 1;
     }
 
     //第1引数のチェック
+    if ( !check( path.resolve( process.argv[ 2 ] ) ) )
+    {
+        console.log( "有効なファイルパスを指定して下さい" );
+        return 1;
+    }
     if ( process.argv.findIndex( item => item === "-t" ) !== 2 )
     {
         /**
@@ -85,13 +90,23 @@ const main = (): void =>
                             fs.writeFileSync( `${ path.resolve( out ) }/index.py`, python( parse ).code, "utf8" )
                             console.log( python( parse ).code );
                         } )()
+                    } else if ( mode == "rb" || mode == "ruby" )
+                    {
+                        ( async () =>
+                        {
+                            const { ruby } = await import( "./api/api" )
+                            fs.writeFileSync( `${ path.resolve( out ) }/index.rb`, ruby( parse ).code, "utf8" )
+                            console.log( ruby( parse ).code );
+                        } )()
+                    } else
+                    {
+                        ( async () =>
+                        {
+                            const { python } = await import( "./api/api" )
+                            fs.writeFileSync( `${ path.resolve( out ) }/index.py`, python( parse ).code, "utf8" )
+                            console.log( python( parse ).code );
+                        } )()
                     }
-                    // if ( mode == "go" )
-                    // {
-                    //     //js解析結果からpythonに変換して出力
-                    //     fs.writeFileSync( `${ path.resolve( out ) }/index.go`, go( parse ).code, "utf8" )
-                    //     console.log( go( parse ).code );
-                    // }
                 }
             }
         }
@@ -101,11 +116,11 @@ const main = (): void =>
         {
             fs.writeFileSync( path.resolve( `${ path.resolve( out ) }/build.json` ), parse ? JSON.stringify( parse ) : "{}", 'utf8' )
         }
-
+        return 0;
     }
     else
     {
         console.log( "第一引数にはファイルパスを指定して下さい" );
+        return 1;
     }
 }
-export { main }

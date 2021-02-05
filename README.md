@@ -1,5 +1,5 @@
 # JCTC
-javascriptをpythonに変換する最高にイカれたライブラリです
+javascriptを他の言語に変換する最高にイカれたライブラリです
 
 ## 使い方
 
@@ -7,10 +7,8 @@ javascriptをpythonに変換する最高にイカれたライブラリです
 
 ```jstc filepath```
 
-## Demo
+## オプション
 
-```git clone https://github.com/riya81/JSTC.git```
+`-mode` 変換先の言語を指定(現在はpythonのみサポート)
 
-```npm i```
-
-```node bin/cli.js demo/test.js -t -mode py```
+`-t`

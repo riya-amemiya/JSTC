@@ -28,7 +28,6 @@ declare namespace acorn
         body: Body3[];
         sourceType: string;
     }
-
     interface Body3
     {
         type: string;
@@ -43,6 +42,7 @@ declare namespace acorn
         callee: Callee;
         kind?: string;
         declarations: Declaration[];
+        test: Test;
     }
 
     interface Body2
@@ -213,6 +213,22 @@ declare namespace acorn
         end: number;
         name: string;
         value: string
+    }
+    interface Right
+    {
+        type: string;
+        start: number;
+        end: number;
+        value: number;
+        raw: string;
+    }    interface Test
+    {
+        type: string;
+        start: number;
+        end: number;
+        left: Left;
+        operator: string;
+        right: Right;
     }
     //end
     interface Options
