@@ -1,7 +1,29 @@
 import acorn from "../../../../type/type"
-export default ( code: acorn.Body3, out: { code: string, cash: { code: string, return: string, Identifier: { name: string, value: string }[] } }, conversion: { IF: ( data: string[] ) => string } ) =>
+import { print } from "./../../../api/api"
+export default ( code: acorn.Body3, out: acorn.OUT, conversion: { IF: ( data: string[] ) => string } ): acorn.OUT =>
 {
-    let _argument: string = ""
+    let _argument = {
+        BinaryExpression: "",
+        out: { code: "", cash: { code: "", return: "", Identifier: out.cash.Identifier } }
+    }
+    const Identifier = ( code: acorn.Left | acorn.Right ) =>
+    {
+        if ( out.cash.Identifier.findIndex( ( n ) => n.name === code.name ) !== -1 )
+        {
+            if ( out.cash.Identifier.findIndex( n => n.to === code.name ) === -1 )
+            {
+                return code.name.toUpperCase()
+            }
+            else
+            {
+                return `_${ code.name }`
+            }
+        }
+        else
+        {
+            return code.name
+        }
+    }
     if ( code.test.type === "BinaryExpression" )
     {
         if ( code.test.operator == "===" )
@@ -10,19 +32,27 @@ export default ( code: acorn.Body3, out: { code: string, cash: { code: string, r
         }
         if ( code.test.left.type === "Identifier" )
         {
-            _argument += code.test.left.name + code.test.operator
+            _argument.BinaryExpression += `${ Identifier( code.test.left ) }${ code.test.operator }`
         } else if ( code.test.left.type === "Literal" )
         {
-            _argument += code.test.left.raw + code.test.operator
+            _argument.BinaryExpression += code.test.left.raw + code.test.operator
         }
         if ( code.test.right.type === "Identifier" )
         {
-            _argument += code.test.right.name
+            _argument.BinaryExpression += Identifier( code.test.right )
         } else if ( code.test.right.type === "Literal" )
         {
-            _argument += code.test.right.raw
+            _argument.BinaryExpression += code.test.right.raw
+        }
+        for ( const c of code.consequent.body )
+        {
+            _argument.out = print( c, _argument.out, {
+                Literal: ( data: string ): string => `print(${ data });`,
+                FunIdentifier: ( data: string[] ): string => `print(${ data[ 0 ] }(${ data[ 1 ] }));`,
+                Identifier: ( data: string ): string => `print(${ data });`
+            } )
         }
     }
-    out.code += conversion.IF( [ _argument ] )
+    out.code += conversion.IF( [ _argument.BinaryExpression, _argument.out.code ] )
     return out
 }

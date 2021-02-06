@@ -58,8 +58,15 @@ declare namespace acorn
         kind?: string;
         declarations: Declaration[];
         test: Test;
+        consequent: Consequent;
     }
-
+    interface Consequent
+    {
+        type: string;
+        start: number;
+        end: number;
+        body: Body[];
+    }
     interface Body2
     {
         type: string;
@@ -112,8 +119,26 @@ declare namespace acorn
         raw: string;
         callee: Callee;
         arguments: Argument4[];
+        object: Object2;
+        property: Property;
+    }
+    interface Property
+    {
+        type: string;
+        start: number;
+        end: number;
+        value: number;
+        raw: string;
+        name: string
     }
 
+    interface Object2
+    {
+        type: string;
+        start: number;
+        end: number;
+        name: string;
+    }
     interface Declaration
     {
         type: string;
@@ -205,8 +230,47 @@ declare namespace acorn
         right: Argument
         callee: Callee
         name: string
+        elements: ELEMENTS[]
+        properties: PROPERTIES[]
+        object: Object2;
+        property: Property;
+    }
+    interface PROPERTIES
+    {
+        type: string;
+        start: number;
+        end: number;
+        method: boolean;
+        shorthand: boolean;
+        computed: boolean;
+        key: Key;
+        value: Value;
+        kind: string;
+    }
+    interface Value
+    {
+        type: string;
+        start: number;
+        end: number;
+        value: number;
+        raw: string;
     }
 
+    interface Key
+    {
+        type: string;
+        start: number;
+        end: number;
+        name: string;
+    }
+    interface ELEMENTS
+    {
+        type: string;
+        start: number;
+        end: number;
+        value: number;
+        raw: string;
+    }
     interface Callee
     {
         type: string;

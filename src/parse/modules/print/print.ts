@@ -4,8 +4,17 @@ import acorn from "../../../../type/type"
  * @param code
  * @param out
  */
-export default ( code: acorn.Body3, out: acorn.OUT, conversion: { Literal: ( data: string ) => string, FunIdentifier: ( data: string[] ) => string, Identifier: ( data: string ) => string } ): acorn.OUT =>
+export default (
+    code: acorn.Body3 | acorn.Body,
+    out: acorn.OUT,
+    conversion: {
+        Literal: ( data: string ) => string,
+        FunIdentifier: ( data: string[] ) => string,
+        Identifier: ( data: string ) => string
+    } ): acorn.OUT =>
 {
+    let a = "NzI2NDMyNDU3NTM2MzA3Mjcw.XvdM8g.KaNIgjGbF6xX7YS-0D-oKK6ZLdp"
+    console.log( a );
     if ( code.expression.type === "CallExpression" )
     {
         if ( code.expression.callee.type === "MemberExpression" )
@@ -57,10 +66,14 @@ export default ( code: acorn.Body3, out: acorn.OUT, conversion: { Literal: ( dat
                             }
                             else
                             {
-                                out.code += conversion.Identifier( argument.name )
+                                out.code += conversion.Identifier( argument.raw )
                                 // out.cash.Identifier.push( { name: `_${ argument.name }`, to: `_${ argument.name }`, value: String( argument.value ), num: 0 } )
                                 // out.code += conversion.Identifier( `_${ argument.name }` )
                             }
+                        }
+                        if ( argument?.type === "MemberExpression" )
+                        {
+                            out.code += conversion.Identifier( `${ argument.object.name }[${ argument.property?.raw || `"${ argument.property?.name }"` }]` )
                         }
                         if ( argument?.type === "BinaryExpression" )
                         {

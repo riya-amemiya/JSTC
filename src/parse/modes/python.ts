@@ -1,5 +1,5 @@
 import acorn from "../../../type/type"
-import { print, variable, Function } from "../../api/api"
+import { print, variable, Function, IF } from "../../api/api"
 /**
  * @module python
  * @param {acorn.Node} codes
@@ -36,6 +36,12 @@ export default function python ( codes: acorn.Node ): acorn.OUT
             } ).cash.code
         } else if ( code.type === "IfStatement" )
         {
+            out = IF( code, out, {
+                IF: ( data: string[] ) =>
+                {
+                    return `if (${ data[ 0 ] }): ${ data[ 1 ] }\n`
+                }
+            } )
 
         }
     }
