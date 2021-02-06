@@ -8,8 +8,23 @@ declare namespace acorn
         cash: {
             code: string;
             return: string;
-            Identifier: { name: string, value: string }[]
+            Identifier: CASH_IDENTIFIER[]
         }
+    }
+    interface CASH
+    {
+        cash: {
+            code: string;
+            return: string;
+            Identifier: CASH_IDENTIFIER[]
+        }
+    }
+    interface CASH_IDENTIFIER
+    {
+        name: string,
+        to: string,
+        value: string,
+        num: number
     }
     function parse ( input: string, options: Options ): Node
 
@@ -28,7 +43,6 @@ declare namespace acorn
         body: Body3[];
         sourceType: string;
     }
-
     interface Body3
     {
         type: string;
@@ -43,8 +57,16 @@ declare namespace acorn
         callee: Callee;
         kind?: string;
         declarations: Declaration[];
+        test: Test;
+        consequent: Consequent;
     }
-
+    interface Consequent
+    {
+        type: string;
+        start: number;
+        end: number;
+        body: Body[];
+    }
     interface Body2
     {
         type: string;
@@ -97,8 +119,26 @@ declare namespace acorn
         raw: string;
         callee: Callee;
         arguments: Argument4[];
+        object: Object2;
+        property: Property;
+    }
+    interface Property
+    {
+        type: string;
+        start: number;
+        end: number;
+        value: number;
+        raw: string;
+        name: string
     }
 
+    interface Object2
+    {
+        type: string;
+        start: number;
+        end: number;
+        name: string;
+    }
     interface Declaration
     {
         type: string;
@@ -190,8 +230,47 @@ declare namespace acorn
         right: Argument
         callee: Callee
         name: string
+        elements: ELEMENTS[]
+        properties: PROPERTIES[]
+        object: Object2;
+        property: Property;
+    }
+    interface PROPERTIES
+    {
+        type: string;
+        start: number;
+        end: number;
+        method: boolean;
+        shorthand: boolean;
+        computed: boolean;
+        key: Key;
+        value: Value;
+        kind: string;
+    }
+    interface Value
+    {
+        type: string;
+        start: number;
+        end: number;
+        value: number;
+        raw: string;
     }
 
+    interface Key
+    {
+        type: string;
+        start: number;
+        end: number;
+        name: string;
+    }
+    interface ELEMENTS
+    {
+        type: string;
+        start: number;
+        end: number;
+        value: number;
+        raw: string;
+    }
     interface Callee
     {
         type: string;
@@ -213,6 +292,23 @@ declare namespace acorn
         end: number;
         name: string;
         value: string
+    }
+    interface Right
+    {
+        type: string;
+        start: number;
+        end: number;
+        value: number;
+        raw: string;
+        name: string;
+    }    interface Test
+    {
+        type: string;
+        start: number;
+        end: number;
+        left: Left;
+        operator: string;
+        right: Right;
     }
     //end
     interface Options

@@ -1,14 +1,12 @@
-function sum(a, b) {
-    let c = 2;
-    console.log(c);
-    console.log("Hello");
-    console.log("hello");
-    return a + b
-}
 const a = 1;
-let b = 1
-var d = 1
-console.log(a);
-console.log(b);
-console.log("Hello");
-console.log(sum(2, 3));
+const A = 3
+if (A == A) {
+    console.log("Hello");
+}
+let b = [0, 1]
+let c = {
+    a: "1",
+    b: "2"
+}
+console.log(b[1]);
+console.log(c.b);

@@ -4,12 +4,7 @@ import acorn from "../../../../type/type"
  * @param c
  * @param out
  */
-export default ( c: acorn.Body, out: { code: string, cash: { code: string, return: string } }, conversion: { BinaryExpression: ( data: string[] ) => string } ):
-    {
-        code: string; cash: {
-            code: string; return: string;
-        };
-    } =>
+export default ( c: acorn.Body, out: acorn.OUT, conversion: { BinaryExpression: ( data: string[] ) => string } ): acorn.OUT =>
 {
     let t = { name: "", raw: "" };
     if ( c.expression.arguments[ 0 ].left.type === "Identifier" )

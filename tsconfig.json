@@ -5,7 +5,7 @@
   ],
   "compilerOptions": {
     "outDir": "tsbuild",
-    "target": "ES3",
+    "target": "es3",
     "module": "esnext",
     "jsx": "react",
     "noEmit": false,
