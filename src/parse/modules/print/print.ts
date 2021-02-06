@@ -13,8 +13,6 @@ export default (
         Identifier: ( data: string ) => string
     } ): acorn.OUT =>
 {
-    let a = "NzI2NDMyNDU3NTM2MzA3Mjcw.XvdM8g.KaNIgjGbF6xX7YS-0D-oKK6ZLdp"
-    console.log( a );
     if ( code.expression.type === "CallExpression" )
     {
         if ( code.expression.callee.type === "MemberExpression" )
