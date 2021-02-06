@@ -8,8 +8,23 @@ declare namespace acorn
         cash: {
             code: string;
             return: string;
-            Identifier: { name: string, value: string }[]
+            Identifier: CASH_IDENTIFIER[]
         }
+    }
+    interface CASH
+    {
+        cash: {
+            code: string;
+            return: string;
+            Identifier: CASH_IDENTIFIER[]
+        }
+    }
+    interface CASH_IDENTIFIER
+    {
+        name: string,
+        to: string,
+        value: string,
+        num: number
     }
     function parse ( input: string, options: Options ): Node
 
@@ -221,6 +236,7 @@ declare namespace acorn
         end: number;
         value: number;
         raw: string;
+        name: string;
     }    interface Test
     {
         type: string;

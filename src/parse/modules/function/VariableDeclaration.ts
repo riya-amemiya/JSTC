@@ -5,12 +5,7 @@ import { variable } from "../../../api/api"
  * @param c
  * @param out
  */
-export default ( c: acorn.Body, out: { code: string, cash: { code: string, return: string, Identifier: { name: string, value: string }[] } }, conversion: { VariableDeclaration: ( data: [ string, number ] ) => string, Kind: { let: ( data: string[] ) => string, const: ( data: string[] ) => string } } ):
-    {
-        code: string; cash: {
-            code: string; return: string; Identifier: { name: string, value: string }[]
-        }
-    } =>
+export default ( c: acorn.Body, out: acorn.OUT, conversion: { VariableDeclaration: ( data: [ string, number ] ) => string, Kind: { let: ( data: string[] ) => string, const: ( data: string[] ) => string } } ): acorn.CASH =>
 {
     if ( c.type === "VariableDeclaration" )
     {

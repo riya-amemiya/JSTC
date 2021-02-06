@@ -4,7 +4,7 @@ import acorn from "../../../../type/type"
  * @param code
  * @param out
  */
-export default ( code: acorn.Body3, out: { code: string, cash: { code: string, return: string, Identifier: { name: string, value: string }[] } }, conversion: { Literal: ( data: string ) => string, FunIdentifier: ( data: string[] ) => string, Identifier: ( data: string ) => string } ): { code: string; cash: { code: string; return: string; Identifier: { name: string, value: string }[] } } =>
+export default ( code: acorn.Body3, out: acorn.OUT, conversion: { Literal: ( data: string ) => string, FunIdentifier: ( data: string[] ) => string, Identifier: ( data: string ) => string } ): acorn.OUT =>
 {
     if ( code.expression.type === "CallExpression" )
     {
@@ -43,13 +43,23 @@ export default ( code: acorn.Body3, out: { code: string, cash: { code: string, r
                         }
                         if ( argument?.type === "Identifier" )
                         {
-                            if ( out.cash.Identifier.find( ( n ) => n.name === argument.name ) )
+                            if ( out.cash.Identifier.findIndex( ( n ) => n.name === argument.name ) === -1 )
                             {
-                                out.code += conversion.Identifier( argument.name.toUpperCase() )
+                                if ( out.cash.Identifier.findIndex( n => n.to === argument.name ) === -1 )
+                                {
+                                    out.code += conversion.Identifier( argument.name.toUpperCase() )
+                                }
+                                else
+                                {
+                                    out.cash.Identifier.push( { name: `_${ argument.name }`, to: `_${ argument.name }`, value: String( argument.value ), num: 0 } )
+                                    out.code += conversion.Identifier( `_${ argument.name }` )
+                                }
                             }
                             else
                             {
-                                out.code += conversion.Identifier( argument.name )
+                                //out.code += conversion.Identifier( argument.name )
+                                out.cash.Identifier.push( { name: `_${ argument.name }`, to: `_${ argument.name }`, value: String( argument.value ), num: 0 } )
+                                out.code += conversion.Identifier( `_${ argument.name }` )
                             }
                         }
                         if ( argument?.type === "BinaryExpression" )

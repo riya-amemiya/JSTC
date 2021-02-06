@@ -5,7 +5,19 @@ import VariableDeclaration from "./VariableDeclaration"
  * @param code
  * @param out
  */
-export default ( code: acorn.Body3, out: { code: string, cash: { code: string, return: string, Identifier: { name: string, value: string }[] } }, conversion: { Literal: ( data: string ) => string, BinaryExpression: ( data: string[] ) => string, Function: ( data: string[] ) => string, VariableDeclaration: ( data: [ string, number ] ) => string, Kind: { let: ( data: string[] ) => string, const: ( data: string[] ) => string } } ) =>
+export default (
+    code: acorn.Body3,
+    out: acorn.OUT,
+    conversion: {
+        Literal: ( data: string ) => string,
+        BinaryExpression: ( data: string[] ) => string,
+        Function: ( data: string[] ) => string,
+        VariableDeclaration: ( data: [ string, number ] ) => string,
+        Kind: {
+            let: ( data: string[] ) => string,
+            const: ( data: string[] ) => string
+        }
+    } ): acorn.OUT =>
 {
     out.cash.code = ""
     let argument: { name: string[], out: string } = { name: [], out: "" }

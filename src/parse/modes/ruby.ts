@@ -7,7 +7,7 @@ import { print, variable, Function } from "../../api/api"
  */
 export default function ruby ( codes: acorn.Node ): acorn.OUT
 {
-    let out: acorn.OUT = { code: "", cash: { code: "", return: "", Identifier: [ { name: "", value: "" } ] } };
+    let out: acorn.OUT = { code: "", cash: { code: "", return: "", Identifier: [ { name: "", to: "", value: "", num: 0 } ] } };
     for ( const code of codes.body )
     {
         if ( code.type === "FunctionDeclaration" )
