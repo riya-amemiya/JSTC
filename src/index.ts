@@ -47,17 +47,6 @@ export default async (): Promise<1 | 0> =>
                 console.log( v.version );
             } )()
         }
-        //out先のフォルダが無かったら作成
-        if ( !check( path.resolve( out ) ) )
-        {
-            fs.mkdir( path.resolve( out ), ( err ): void =>
-            {
-                if ( err )
-                {
-                    throw err;
-                }
-            } );
-        }
 
         //outオプションの確認
         if ( process.argv.findIndex( item => item === "-out" ) !== -1 && process.argv.findIndex( item => item === "-out" ) !== 2 )
@@ -69,6 +58,17 @@ export default async (): Promise<1 | 0> =>
             {
                 out = process.argv[ process.argv.findIndex( item => item === "-out" ) + 1 ]
             }
+        }
+        //out先のフォルダが無かったら作成
+        if ( !check( path.resolve( out ) ) )
+        {
+            fs.mkdir( path.resolve( out ), ( err ): void =>
+            {
+                if ( err )
+                {
+                    throw err;
+                }
+            } );
         }
         if ( process.argv.findIndex( item => item === "-not" ) === -1 )
         {
