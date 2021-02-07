@@ -1,6 +1,6 @@
 {
     "name": "cli_jstc",
-    "version": "1.0.18",
+    "version": "1.0.19",
     "description": "",
     "main": "min/index.js",
     "scripts": {
@@ -50,6 +50,6 @@
         "tslib": "^2.1.0"
     },
     "bin": {
-        "jstc": "./bin/cli.js"
+        "jstc": "bin/cli.js"
     }
 }
