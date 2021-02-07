@@ -113,6 +113,15 @@ export default async (): Promise<1 | 0> =>
                         } )()
                     }
                 }
+            } else
+            {
+                await ( async () =>
+                {
+                    const { python } = await import( "./api/api" )
+                    let c = python( parse, "python" )
+                    fs.writeFileSync( `${ path.resolve( out ) }/index.py`, c.code, "utf8" )
+                    console.log( c.code );
+                } )()
             }
         }
 
