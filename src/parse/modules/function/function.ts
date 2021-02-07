@@ -77,6 +77,10 @@ export default (
             {
                 out.cash.return += `${ c.argument.left.name } ${ c.argument.operator } ${ c.argument.right.name }`
             }
+            if ( c.argument.type === "Identifier" )
+            {
+                out.cash.return += c.argument.name
+            }
         }
     }
     //out.code += `def ${ code.id.name }(${ argument.out }): ${ out.cash.code } return ${ out.cash.return }\n`

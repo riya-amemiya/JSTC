@@ -15,6 +15,17 @@ export default (
 {
     if ( code.expression.type === "CallExpression" )
     {
+        if ( code.expression.callee.type == "Identifier" )
+        {
+            out.cash.code = ""
+
+            for ( const c of code.expression.arguments )
+            {
+                out.cash.code += `${ c.raw },`
+            }
+
+            out.code += `${ code.expression.callee.name }(${ out.cash.code.slice( 0, -1 ) })\n`
+        }
         if ( code.expression.callee.type === "MemberExpression" )
         {
             if ( code.expression.callee.object.name === "console" )

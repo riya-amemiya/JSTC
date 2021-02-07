@@ -94,6 +94,7 @@ declare namespace acorn
         left: Id;
         operator: string;
         right: Id;
+        name: string
     }
 
     interface Expression2
