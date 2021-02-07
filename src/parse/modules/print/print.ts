@@ -1,4 +1,6 @@
 import acorn from "../../../../type/type"
+import chalk from "chalk"
+import { Out } from '../../../api/api';
 /**
  * @module print
  * @param code
@@ -11,10 +13,44 @@ export default (
         Literal: ( data: string ) => string,
         FunIdentifier: ( data: string[] ) => string,
         Identifier: ( data: string ) => string
-    } ): acorn.OUT =>
+    },
+    mode: string
+): acorn.OUT =>
 {
     if ( code.expression.type === "CallExpression" )
     {
+        if ( code.expression.callee.type == "Identifier" )
+        {
+            let has = { name: out.ast.Function.findIndex( n => n.name === code.expression.callee.name ) }
+            let comment = ""
+            if ( has.name === -1 )
+            {
+                if ( out.not.findIndex( n => n.name === code.expression.callee.name ) === -1 && out.ast.Function.findIndex( n => n.name === code.expression.callee.name ) === -1 )
+                {
+                    if ( out.not.findIndex( n => n.num < 1 ) !== -1 )
+                    {
+                        out = Out.not( out, { name: code.expression.callee.name, num: 0 } )
+                        console.log( chalk.red( `警告:${ code.expression.callee.name }は宣言されていません!` ) );
+                        out.not[ out.not.findIndex( n => n.name === code.expression.callee.name ) ].num++
+                        if ( mode == "python" )
+                        {
+                            comment = `#警告:${ code.expression.callee.name }は宣言されていません!`
+                        }
+                        else if ( mode == "ruby" )
+                        {
+                            comment = `#警告:${ code.expression.callee.name }は宣言されていません!`
+                        }
+                    }
+                }
+            }
+            out.cash.code = ""
+
+            for ( const c of code.expression.arguments )
+            {
+                out.cash.code += `${ c.raw },`
+            }
+            out.code += `${ code.expression.callee.name }(${ out.cash.code.slice( 0, -1 ) })${ comment }\n`
+        }
         if ( code.expression.callee.type === "MemberExpression" )
         {
             if ( code.expression.callee.object.name === "console" )

@@ -1,4 +1,5 @@
 import acorn from "../../../../type/type"
+import { Out } from "../../../api/api"
 import VariableDeclaration from "./VariableDeclaration"
 /**
  * @module functrion
@@ -19,7 +20,7 @@ export default (
         }
     } ): acorn.OUT =>
 {
-    out.cash.code = ""
+    out.cash = Out.cleanCash( out )
     let argument: { name: string[], out: string } = { name: [], out: "" }
     for ( const params of code.params )
     {
@@ -77,9 +78,15 @@ export default (
             {
                 out.cash.return += `${ c.argument.left.name } ${ c.argument.operator } ${ c.argument.right.name }`
             }
+            if ( c.argument.type === "Identifier" )
+            {
+                out.cash.return += c.argument.name
+            }
         }
     }
     //out.code += `def ${ code.id.name }(${ argument.out }): ${ out.cash.code } return ${ out.cash.return }\n`
-    out.code += conversion.Function( [ code.id.name, argument.out, out.cash.code, out.cash.return ] )
+    out = Out.ast( out, { name: code.id.name, argument: argument.out, body: out.cash.code, return: out.cash.return } )
+
+    out.cash.Function += conversion.Function( [ code.id.name, argument.out, out.cash.code, out.cash.return ] )
     return out
 }

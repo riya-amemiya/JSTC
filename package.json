@@ -1,12 +1,12 @@
 {
     "name": "cli_jstc",
-    "version": "1.0.18",
+    "version": "1.1.2",
     "description": "",
     "main": "min/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "typescript": "tsc --build tsconfig.json",
-        "babel": " ./node_modules/.bin/babel tsbuild --extensions '.js' --out-dir build --no-comments && ./node_modules/.bin/babili build -d min",
+        "babel": " ./node_modules/.bin/babel src --extensions '.js,.ts' --out-dir build --no-comments && ./node_modules/.bin/babili build -d min",
         "build": "npm run typescript && npm run babel",
         "start": "npm run build && node build/index.js",
         "typedoc": "typedoc ./src/",
@@ -21,10 +21,12 @@
         "@babel/core": "^7.12.13",
         "@babel/plugin-proposal-class-properties": "^7.12.13",
         "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
+        "@babel/plugin-proposal-optional-chaining": "^7.12.13",
         "@babel/plugin-transform-async-to-generator": "^7.12.13",
         "@babel/plugin-transform-template-literals": "^7.12.13",
         "@babel/preset-env": "^7.12.13",
         "@babel/preset-typescript": "^7.12.13",
+        "@types/chalk": "^2.2.0",
         "babel-core": "^6.26.3",
         "babel-jest": "^26.6.3",
         "babel-plugin-minify-constant-folding": "^0.5.0",
@@ -46,9 +48,10 @@
         "acorn-loose": "^8.0.1",
         "acorn-node": "^2.0.1",
         "acorn-walk": "^8.0.1",
+        "chalk": "^2.4.2",
         "tslib": "^2.1.0"
     },
     "bin": {
-        "jstc": "./bin/cli.js"
+        "jstc": "bin/cli.js"
     }
 }

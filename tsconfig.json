@@ -5,10 +5,10 @@
   ],
   "compilerOptions": {
     "outDir": "tsbuild",
-    "target": "es3",
+    "target": "es2020",
     "module": "esnext",
     "jsx": "react",
-    "noEmit": false,
+    "noEmit": true,
     "removeComments": true,
     "allowJs": true,
     "strict": true,
@@ -33,7 +33,7 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "lib": [
-      "es2020",
+      "ESNext",
       "dom"
     ]
   }

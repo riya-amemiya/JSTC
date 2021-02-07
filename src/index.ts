@@ -41,22 +41,11 @@ export default async (): Promise<1 | 0> =>
         //versionオプションの確認
         if ( process.argv.findIndex( item => item === "-v" ) !== -1 && process.argv.findIndex( item => item === "-v" ) !== 2 )
         {
-            ( async function (): Promise<void>
+            await ( async function (): Promise<void>
             {
                 const v = await import( "./../package.json" )
                 console.log( v.version );
             } )()
-        }
-        //out先のフォルダが無かったら作成
-        if ( !check( path.resolve( out ) ) )
-        {
-            fs.mkdir( path.resolve( out ), ( err ): void =>
-            {
-                if ( err )
-                {
-                    throw err;
-                }
-            } );
         }
 
         //outオプションの確認
@@ -69,6 +58,17 @@ export default async (): Promise<1 | 0> =>
             {
                 out = process.argv[ process.argv.findIndex( item => item === "-out" ) + 1 ]
             }
+        }
+        //out先のフォルダが無かったら作成
+        if ( !check( path.resolve( out ) ) )
+        {
+            fs.mkdir( path.resolve( out ), ( err ): void =>
+            {
+                if ( err )
+                {
+                    throw err;
+                }
+            } );
         }
         if ( process.argv.findIndex( item => item === "-not" ) === -1 )
         {
@@ -84,27 +84,32 @@ export default async (): Promise<1 | 0> =>
                     if ( mode == "py" || mode == "python" )
                     {
                         //js解析結果からpythonに変換して出力
-                        ( async () =>
+                        await ( async () =>
                         {
                             const { python } = await import( "./api/api" )
-                            fs.writeFileSync( `${ path.resolve( out ) }/index.py`, python( parse ).code, "utf8" )
-                            console.log( python( parse ).code );
+                            let c = python( parse, "python" )
+                            fs.writeFileSync( `${ path.resolve( out ) }/index.py`, c.code, "utf8" )
+                            console.log( c.code );
+
                         } )()
                     } else if ( mode == "rb" || mode == "ruby" )
                     {
-                        ( async () =>
+                        await ( async () =>
                         {
                             const { ruby } = await import( "./api/api" )
-                            fs.writeFileSync( `${ path.resolve( out ) }/index.rb`, ruby( parse ).code, "utf8" )
-                            console.log( ruby( parse ).code );
+                            let c = ruby( parse, "ruby" )
+                            fs.writeFileSync( `${ path.resolve( out ) }/index.rb`, c.code, "utf8" )
+                            console.log( c.code );
+
                         } )()
                     } else
                     {
-                        ( async () =>
+                        await ( async () =>
                         {
                             const { python } = await import( "./api/api" )
-                            fs.writeFileSync( `${ path.resolve( out ) }/index.py`, python( parse ).code, "utf8" )
-                            console.log( python( parse ).code );
+                            let c = python( parse, "python" )
+                            fs.writeFileSync( `${ path.resolve( out ) }/index.py`, c.code, "utf8" )
+                            console.log( c.code );
                         } )()
                     }
                 }

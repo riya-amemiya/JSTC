@@ -5,6 +5,8 @@ import print from "../parse/modules/print/print"
 import Function from "../parse/modules/function/function"
 import IF from "./../parse/modules/if/if"
 import ruby from '../parse/modes/ruby';
+import parse from '../parse/parse';
+import { Out } from "../parse/out"
 /**
      *
      * @module check
@@ -40,4 +42,4 @@ function read ( file: string ): string
     }
     return "";
 }
-export { check, read, python, variable, print, Function, ruby, IF }
+export { check, read, python, variable, print, Function, ruby, IF, parse, Out }

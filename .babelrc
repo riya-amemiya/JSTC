@@ -4,7 +4,10 @@
             "@babel/env",
             {
                 "spec": true,
-                "modules": "commonjs"
+                "modules": "commonjs",
+                "targets": {
+                    "node": "current"
+                }
             }
         ],
         [
@@ -58,6 +61,9 @@
         ],
         [
             "@babel/plugin-transform-template-literals"
+        ],
+        [
+            "@babel/plugin-proposal-optional-chaining"
         ]
     ]
 }
