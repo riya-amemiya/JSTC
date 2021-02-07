@@ -1,5 +1,5 @@
 import acorn from "../../../../type/type"
-import { print, Out } from "./../../../api/api"
+import { print, Out } from "../../../api/api"
 export default ( code: acorn.Body3, mode: string, out: acorn.OUT, conversion: { IF: ( data: string[] ) => string } ): acorn.OUT =>
 {
     let _argument = {

@@ -1,9 +1,9 @@
 import fs from 'fs'
 import python from '../parse/modes/python';
-import variable from "../parse/modules/variable/variable"
-import print from "../parse/modules/print/print"
-import Function from "../parse/modules/function/function"
-import IF from "./../parse/modules/if/if"
+import variable from "../parse/modules/variable/mian"
+import print from "../parse/modules/print/main"
+import Function from "../parse/modules/function/main"
+import IF from "../parse/modules/if/main"
 import ruby from '../parse/modes/ruby';
 import parse from '../parse/parse';
 import { Out } from "../parse/out"
