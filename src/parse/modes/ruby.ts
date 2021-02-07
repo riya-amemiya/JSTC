@@ -1,5 +1,5 @@
 import acorn from "../../../type/type"
-import { print, variable, Function } from "../../api/api"
+import { parse, Out } from "../../api/api"
 /**
  * @module python
  * @param {acorn.Node} codes
@@ -7,8 +7,33 @@ import { print, variable, Function } from "../../api/api"
  */
 export default function ruby ( codes: acorn.Node ): acorn.OUT
 {
-    let out: acorn.OUT = { code: "", cash: { code: "", return: "", Identifier: [ { name: "", to: "", value: "", num: 0 } ] } };
-    for ( const code of codes.body )
+    let out: acorn.OUT = Out.clean();
+    return (
+        parse( {
+            codes, out, conversion: {
+                Function: {
+                    Literal: ( data: string ): string => `puts(${ data });`,
+                    BinaryExpression: ( data: string[] ): string => `puts(${ data[ 0 ] }${ data[ 1 ] }${ data[ 2 ] });`,
+                    Function: ( data: string[] ): string => `def ${ data[ 0 ] }(${ data[ 1 ] }) ${ data[ 2 ] } return ${ data[ 3 ] } end\n`,
+                    VariableDeclaration: ( data ): string => `${ data[ 0 ] }=${ data[ 1 ] };`,
+                    Kind: { let: ( data: string[] ): string => `${ data[ 0 ] }=${ data[ 1 ] };`, const: ( data: string[] ): string => `${ data[ 0 ] }=${ data[ 1 ] };` }
+                },
+                Print: {
+                    Literal: ( data: string ): string => `puts(${ data })\n`,
+                    FunIdentifier: ( data: string[] ): string => `puts(${ data[ 0 ] }(${ data[ 1 ] }))\n`,
+                    Identifier: ( data: string ): string => `puts(${ data })\n`
+                },
+                Variable: {
+                    Kind: { let: ( data: string[] ): string => `${ data[ 0 ] }=${ data[ 1 ] }\n`, const: ( data: string[] ): string => `${ data[ 0 ] }=${ data[ 1 ] }\n` }
+                },
+                IF: ( data: string[] ) =>
+                {
+                    return `if (${ data[ 0 ] }) ${ data[ 1 ] } end\n`;
+                }
+            }
+        } )
+    )
+    /*for ( const code of codes.body )
     {
         if ( code.type === "FunctionDeclaration" )
         {
@@ -36,5 +61,5 @@ export default function ruby ( codes: acorn.Node ): acorn.OUT
             } ).cash.code
         }
     }
-    return out
+    return out*/
 }

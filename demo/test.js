@@ -1,5 +1,10 @@
+Name("Hello")
+
 function Name(name) {
     console.log(name);
     return name
 }
-Name("Hello")
+
+function sum(a, b) {
+    return a + b
+}

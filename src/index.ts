@@ -41,7 +41,7 @@ export default async (): Promise<1 | 0> =>
         //versionオプションの確認
         if ( process.argv.findIndex( item => item === "-v" ) !== -1 && process.argv.findIndex( item => item === "-v" ) !== 2 )
         {
-            ( async function (): Promise<void>
+            await ( async function (): Promise<void>
             {
                 const v = await import( "./../package.json" )
                 console.log( v.version );
@@ -84,7 +84,7 @@ export default async (): Promise<1 | 0> =>
                     if ( mode == "py" || mode == "python" )
                     {
                         //js解析結果からpythonに変換して出力
-                        ( async () =>
+                        await ( async () =>
                         {
                             const { python } = await import( "./api/api" )
                             fs.writeFileSync( `${ path.resolve( out ) }/index.py`, python( parse ).code, "utf8" )
@@ -92,7 +92,7 @@ export default async (): Promise<1 | 0> =>
                         } )()
                     } else if ( mode == "rb" || mode == "ruby" )
                     {
-                        ( async () =>
+                        await ( async () =>
                         {
                             const { ruby } = await import( "./api/api" )
                             fs.writeFileSync( `${ path.resolve( out ) }/index.rb`, ruby( parse ).code, "utf8" )
@@ -100,7 +100,7 @@ export default async (): Promise<1 | 0> =>
                         } )()
                     } else
                     {
-                        ( async () =>
+                        await ( async () =>
                         {
                             const { python } = await import( "./api/api" )
                             fs.writeFileSync( `${ path.resolve( out ) }/index.py`, python( parse ).code, "utf8" )

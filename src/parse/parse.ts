@@ -6,33 +6,32 @@ import { print, variable, Function, IF } from "../api/api"
  * @returns {acorn.OUT} 変換結果を出力
  */
 export default function parse (
-    codes: acorn.Node,
-    out: acorn.OUT,
-    conversion: {
-        Function: {
-            Literal: ( data: string ) => string,
-            BinaryExpression: ( data: string[] ) => string,
-            Function: ( data: string[] ) => string,
-            VariableDeclaration: ( data: [ string, number ] ) => string,
-            Kind: {
-                let: ( data: string[] ) => string,
-                const: ( data: string[] ) => string
+    { codes, out, conversion }: {
+        codes: acorn.Node; out: acorn.OUT; conversion: {
+            Function: {
+                Literal: ( data: string ) => string
+                BinaryExpression: ( data: string[] ) => string
+                Function: ( data: string[] ) => string
+                VariableDeclaration: ( data: [ string, number ] ) => string
+                Kind: {
+                    let: ( data: string[] ) => string
+                    const: ( data: string[] ) => string
+                }
             }
-        },
-        Print: {
-            Literal: ( data: string ) => string,
-            FunIdentifier: ( data: string[] ) => string,
-            Identifier: ( data: string ) => string
-        },
-        Variable: {
-            Kind: {
-                let: ( data: string[] ) => string,
-                const: ( data: string[] ) => string
+            Print: {
+                Literal: ( data: string ) => string
+                FunIdentifier: ( data: string[] ) => string
+                Identifier: ( data: string ) => string
             }
+            Variable: {
+                Kind: {
+                    let: ( data: string[] ) => string
+                    const: ( data: string[] ) => string
+                }
+            }
+            IF: ( data: string[] ) => string
         }
-        IF: ( data: string[] ) => string
-    }
-): acorn.OUT
+    } ): acorn.OUT
 {
     for ( const code of codes.body )
     {
@@ -54,5 +53,6 @@ export default function parse (
 
         }
     }
+    out.code = out.cash.Function + out.code
     return out
 }

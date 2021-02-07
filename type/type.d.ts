@@ -9,6 +9,7 @@ declare namespace acorn
             code: string;
             return: string;
             Identifier: CASH_IDENTIFIER[]
+            Function: string
         }
     }
     interface CASH

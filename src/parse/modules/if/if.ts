@@ -1,10 +1,10 @@
 import acorn from "../../../../type/type"
-import { print } from "./../../../api/api"
+import { print, Out } from "./../../../api/api"
 export default ( code: acorn.Body3, out: acorn.OUT, conversion: { IF: ( data: string[] ) => string } ): acorn.OUT =>
 {
     let _argument = {
         BinaryExpression: "",
-        out: { code: "", cash: { code: "", return: "", Identifier: out.cash.Identifier } }
+        out: Out.clean()
     }
     const Identifier = ( code: acorn.Left | acorn.Right ) =>
     {

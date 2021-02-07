@@ -84,6 +84,6 @@ export default (
         }
     }
     //out.code += `def ${ code.id.name }(${ argument.out }): ${ out.cash.code } return ${ out.cash.return }\n`
-    out.code += conversion.Function( [ code.id.name, argument.out, out.cash.code, out.cash.return ] )
+    out.cash.Function += conversion.Function( [ code.id.name, argument.out, out.cash.code, out.cash.return ] )
     return out
 }
