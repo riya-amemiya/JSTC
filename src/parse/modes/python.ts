@@ -5,7 +5,7 @@ import { parse, Out } from "../../api/api"
  * @param {acorn.Node} codes
  * @returns {acorn.OUT} 変換結果を出力
  */
-export default function python ( codes: acorn.Node ): acorn.OUT
+export default function python ( codes: acorn.Node, mode: string ): acorn.OUT
 {
     let out: acorn.OUT = Out.clean();
     return (
@@ -30,7 +30,7 @@ export default function python ( codes: acorn.Node ): acorn.OUT
                 {
                     return `if (${ data[ 0 ] }): ${ data[ 1 ] }\n`;
                 }
-            }
+            }, mode
         } )
     )
     /*let out: acorn.OUT = { code: "", cash: { code: "", return: "", Identifier: [ { name: "", to: "", value: "", num: 0 } ] } };

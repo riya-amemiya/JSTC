@@ -11,6 +11,22 @@ declare namespace acorn
             Identifier: CASH_IDENTIFIER[]
             Function: string
         }
+        not: OUTNOT[]
+        ast: {
+            Function: ASTFUNCTION[]
+        }
+    }
+    interface ASTFUNCTION
+    {
+        name: string,
+        argument: string,
+        body: string,
+        return: string
+    }
+    interface OUTNOT
+    {
+        name: string
+        num: number
     }
     interface CASH
     {

@@ -8,7 +8,7 @@
     "target": "es2020",
     "module": "esnext",
     "jsx": "react",
-    "noEmit": false,
+    "noEmit": true,
     "removeComments": true,
     "allowJs": true,
     "strict": true,

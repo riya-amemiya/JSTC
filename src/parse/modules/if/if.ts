@@ -1,6 +1,6 @@
 import acorn from "../../../../type/type"
 import { print, Out } from "./../../../api/api"
-export default ( code: acorn.Body3, out: acorn.OUT, conversion: { IF: ( data: string[] ) => string } ): acorn.OUT =>
+export default ( code: acorn.Body3, mode: string, out: acorn.OUT, conversion: { IF: ( data: string[] ) => string } ): acorn.OUT =>
 {
     let _argument = {
         BinaryExpression: "",
@@ -50,7 +50,7 @@ export default ( code: acorn.Body3, out: acorn.OUT, conversion: { IF: ( data: st
                 Literal: ( data: string ): string => `print(${ data });`,
                 FunIdentifier: ( data: string[] ): string => `print(${ data[ 0 ] }(${ data[ 1 ] }));`,
                 Identifier: ( data: string ): string => `print(${ data });`
-            } )
+            }, mode )
         }
     }
     out.code += conversion.IF( [ _argument.BinaryExpression, _argument.out.code ] )

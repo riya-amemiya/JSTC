@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "typescript": "tsc --build tsconfig.json",
-        "babel": " ./node_modules/.bin/babel tsbuild --extensions '.js' --out-dir build --no-comments && ./node_modules/.bin/babili build -d min",
+        "babel": " ./node_modules/.bin/babel src --extensions '.js,.ts' --out-dir build --no-comments && ./node_modules/.bin/babili build -d min",
         "build": "npm run typescript && npm run babel",
         "start": "npm run build && node build/index.js",
         "typedoc": "typedoc ./src/",
@@ -37,6 +37,7 @@
         "babel-plugin-transform-merge-sibling-variables": "^6.9.4",
         "babel-plugin-transform-minify-booleans": "^6.9.4",
         "babili": "^0.0.12",
+        "chalk": "^2.4.2",
         "fcc_typescript": "^1.0.8",
         "gh-pages": "^3.1.0",
         "typedoc": "^0.20.20",

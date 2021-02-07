@@ -6,7 +6,7 @@ import { print, variable, Function, IF } from "../api/api"
  * @returns {acorn.OUT} 変換結果を出力
  */
 export default function parse (
-    { codes, out, conversion }: {
+    { codes, out, conversion, mode }: {
         codes: acorn.Node; out: acorn.OUT; conversion: {
             Function: {
                 Literal: ( data: string ) => string
@@ -30,7 +30,7 @@ export default function parse (
                 }
             }
             IF: ( data: string[] ) => string
-        }
+        }; mode: string
     } ): acorn.OUT
 {
     for ( const code of codes.body )
@@ -41,7 +41,7 @@ export default function parse (
         }
         else if ( code.type === "ExpressionStatement" )
         {
-            out = print( code, out, conversion.Print )
+            out = print( code, out, conversion.Print, mode )
         }
         else if ( code.type === "VariableDeclaration" )
         {
@@ -49,7 +49,7 @@ export default function parse (
             out.code += variable( code, out, conversion.Variable ).cash.code
         } else if ( code.type === "IfStatement" )
         {
-            out = IF( code, out, { IF: conversion.IF } )
+            out = IF( code, mode, out, { IF: conversion.IF } )
 
         }
     }

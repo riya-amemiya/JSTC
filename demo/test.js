@@ -1,4 +1,4 @@
-Name("Hello")
+Names("Hello")
 
 function Name(name) {
     console.log(name);
@@ -8,3 +8,5 @@ function Name(name) {
 function sum(a, b) {
     return a + b
 }
+const a = Name(Name("Hello"))
+console.log(a);

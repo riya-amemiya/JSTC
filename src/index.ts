@@ -87,24 +87,29 @@ export default async (): Promise<1 | 0> =>
                         await ( async () =>
                         {
                             const { python } = await import( "./api/api" )
-                            fs.writeFileSync( `${ path.resolve( out ) }/index.py`, python( parse ).code, "utf8" )
-                            console.log( python( parse ).code );
+                            let c = python( parse, "python" )
+                            fs.writeFileSync( `${ path.resolve( out ) }/index.py`, c.code, "utf8" )
+                            console.log( c.code );
+
                         } )()
                     } else if ( mode == "rb" || mode == "ruby" )
                     {
                         await ( async () =>
                         {
                             const { ruby } = await import( "./api/api" )
-                            fs.writeFileSync( `${ path.resolve( out ) }/index.rb`, ruby( parse ).code, "utf8" )
-                            console.log( ruby( parse ).code );
+                            let c = ruby( parse, "ruby" )
+                            fs.writeFileSync( `${ path.resolve( out ) }/index.rb`, c.code, "utf8" )
+                            console.log( c.code );
+
                         } )()
                     } else
                     {
                         await ( async () =>
                         {
                             const { python } = await import( "./api/api" )
-                            fs.writeFileSync( `${ path.resolve( out ) }/index.py`, python( parse ).code, "utf8" )
-                            console.log( python( parse ).code );
+                            let c = python( parse, "python" )
+                            fs.writeFileSync( `${ path.resolve( out ) }/index.py`, c.code, "utf8" )
+                            console.log( c.code );
                         } )()
                     }
                 }

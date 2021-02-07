@@ -1,4 +1,5 @@
 import acorn from "../../../../type/type"
+import chalk from "chalk"
 export default ( code: acorn.Body3 | acorn.Body, out: acorn.OUT, conversion: { Kind: { let: ( data: string[] ) => string, const: ( data: string[] ) => string } } ): acorn.OUT =>
 {
 
@@ -8,6 +9,34 @@ export default ( code: acorn.Body3 | acorn.Body, out: acorn.OUT, conversion: { K
         if ( code.declarations[ 0 ].init.type == "Literal" )
         {
             raw = code.declarations[ 0 ].init.raw
+        }
+        if ( code.declarations[ 0 ].init.type == "CallExpression" )
+        {
+            raw = code.declarations[ 0 ].init.callee.name + "("
+            for ( const c of code.declarations[ 0 ].init.arguments )
+            {
+                if ( c.type == "CallExpression" )
+                {
+                    if ( out.ast.Function.findIndex( n => n.name === c.callee.name ) === -1 )
+                    {
+                        console.log( chalk.red( "警告:宣言されていません!" ) );
+                    }
+                    raw += c.callee.name + "("
+                    for ( const d of c.arguments )
+                    {
+                        if ( d.type == "Literal" )
+                        {
+                            raw += `${ d.raw },`
+                        }
+                    }
+                    raw = raw.slice( 0, -1 ) + "))"
+                }
+                if ( c.type == "Literal" )
+                {
+                    raw += `${ c.raw },`
+                }
+                raw = raw.slice( 0, -1 ) + ")"
+            }
         }
         if ( code.declarations[ 0 ].init.type == "ArrayExpression" )
         {
