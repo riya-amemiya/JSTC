@@ -1,4 +1,4 @@
-Names("Hello")
+Name("Hello")
 
 function Name(name) {
     console.log(name);

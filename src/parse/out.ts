@@ -30,7 +30,7 @@ export const Out = {
             } ]
         }
     },
-    cleanCash: ( out: acron.OUT ) =>
+    cleanCash: ( out: acron.OUT ): acron.OUTCASH =>
     {
         return { code: "", return: "", Identifier: out.cash.Identifier, Function: out.cash.Function }
     },

@@ -5,16 +5,18 @@ declare namespace acorn
     interface OUT
     {
         code: string;
-        cash: {
-            code: string;
-            return: string;
-            Identifier: CASH_IDENTIFIER[]
-            Function: string
-        }
+        cash: OUTCASH
         not: OUTNOT[]
         ast: {
             Function: ASTFUNCTION[]
         }
+    }
+    interface OUTCASH
+    {
+        code: string;
+        return: string;
+        Identifier: CASH_IDENTIFIER[]
+        Function: string
     }
     interface ASTFUNCTION
     {

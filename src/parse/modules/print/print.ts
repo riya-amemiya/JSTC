@@ -25,7 +25,7 @@ export default (
             let comment = ""
             if ( has.name === -1 )
             {
-                if ( out.not.findIndex( n => n.name === code.expression.callee.name ) === -1 )
+                if ( out.not.findIndex( n => n.name === code.expression.callee.name ) === -1 && out.ast.Function.findIndex( n => n.name === code.expression.callee.name ) === -1 )
                 {
                     if ( out.not.findIndex( n => n.num < 1 ) !== -1 )
                     {

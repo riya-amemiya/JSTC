@@ -39,7 +39,23 @@ export default function parse (
         {
             out = Function( code, out, conversion.Function )
         }
-        else if ( code.type === "ExpressionStatement" )
+        /*else if ( code.type === "ExpressionStatement" )
+        {
+            out = print( code, out, conversion.Print, mode )
+        }
+        else if ( code.type === "VariableDeclaration" )
+        {
+            out.cash.code = ""
+            out.code += variable( code, out, conversion.Variable ).cash.code
+        } else if ( code.type === "IfStatement" )
+        {
+            out = IF( code, mode, out, { IF: conversion.IF } )
+
+        }*/
+    }
+    for ( const code of codes.body )
+    {
+        if ( code.type === "ExpressionStatement" )
         {
             out = print( code, out, conversion.Print, mode )
         }
